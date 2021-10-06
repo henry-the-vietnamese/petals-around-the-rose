@@ -29,12 +29,17 @@ become a Potentate of the Rose.
 )
 
 # Create 3 variables to keep track of how many games will be played.
-COUNT = 0
-CORRECT = 0
-INCORRECT = 0
+ROUND = 0
+CONSECUTIVE_CORRECT = 0
+CONSECUTIVE_INCORRECT = 0
+FINAL_CORRECT = 0
+FINAL_INCORRECT = 0
+
+# Create a list to keep track of correct or incorrect guesses in a row.
+consecutive = []
 
 # Start the game.
-COUNT += 1
+ROUND += 1
 
 # Create an empty to store 5 randomly generated dice rolls.
 dicelist = []
@@ -65,10 +70,14 @@ for i in dicelist:
 GUESS = int(input('Please enter your guess for the roll: '))
 
 if GUESS == SCORE:
-    CORRECT += 1
+    CONSECUTIVE_CORRECT += 1
+    FINAL_CORRECT += 1
+    consecutive.append('correct')
     print('Well done! You guessed it!')
 else:
-    INCORRECT += 1
+    CONSECUTIVE_INCORRECT += 1
+    FINAL_INCORRECT += 1
+    consecutive.append('incorrect')
     if GUESS % 2 == 0:
         print(f'No sorry, it\'s {SCORE} not {GUESS}.')
     else:
@@ -79,7 +88,7 @@ repeat = input('\nRoll dice again [y|n]? ')
 
 while repeat.lower() in ['y', 'yes']:
     # The game starts again.
-    COUNT += 1
+    ROUND += 1
     # Create an empty to store 5 randomly generated dice rolls.
     dicelist = []
     for _ in range(5):
@@ -105,14 +114,38 @@ while repeat.lower() in ['y', 'yes']:
     # Prompt for and read the user's guess.
     GUESS = int(input('Please enter your guess for the roll: '))
     if GUESS == SCORE:
-        CORRECT += 1
+        CONSECUTIVE_CORRECT += 1
+        FINAL_CORRECT += 1
+        consecutive.append('correct')
         print('Well done! You guessed it!')
     else:
-        INCORRECT += 1
+        CONSECUTIVE_INCORRECT += 1
+        FINAL_INCORRECT += 1
+        consecutive.append('incorrect')
         if GUESS % 2 == 0:
             print(f'No sorry, it\'s {SCORE} not {GUESS}.')
         else:
             print(f'No sorry, it\'s {SCORE} not {GUESS}. The score is always even.')
+    # Check for four consecutive guesses.
+    if ['correct', 'incorrect'] in consecutive:
+        # Reset to 0 if correct or incorrect guesses are not consecutive.
+        CONSECUTIVE_CORRECT = 0
+        CONSECUTIVE_INCORRECT = 0
+        consecutive.clear()
+    # Now the guesses are consecutive.
+    if len(consecutive) == 4:
+        if 'correct' in consecutive and 'incorrect' not in consecutive:
+            print(
+            """
+            Congratulations! You have worked out the secret!
+            Make sure you don't tell anyone!
+            """
+            )
+        elif 'incorrect' in consecutive and 'correct' not in consecutive:
+            print('Hint: The name of the game is important... Petals Around the Rose.')
+        CONSECUTIVE_CORRECT = 0
+        CONSECUTIVE_INCORRECT = 0
+        consecutive.clear()
     # Repeat the game.
     repeat = input('\nRoll dice again [y|n]? ')
 
@@ -123,9 +156,9 @@ f"""
 Game Summary
 ============
 
-You played {COUNT} games:
-  |--> Number of correct guesses: {CORRECT}
-  |--> Number of incorrect guesses: {INCORRECT}
+You played {ROUND} games:
+  |--> Number of correct guesses: {FINAL_CORRECT}
+  |--> Number of incorrect guesses: {FINAL_INCORRECT}
 
 Thanks for playing!
 """
