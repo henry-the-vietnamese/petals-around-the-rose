@@ -64,3 +64,41 @@ else:
     else:
         print(f'No sorry, it\'s {score} not {guess}. The score is always even.')
 
+# Repeat the game.
+repeat = input('\nRoll dice again [y|n]? ')
+
+while repeat.lower() in ['y', 'yes']:
+    # Create an empty to store 5 randomly generated dice rolls.
+    dicelist = []
+    for _ in range(5):
+        i = random.randint(1, 6)
+        dicelist.append(i)
+    # Call a function to display the randomly generated dice rolls to the screen.
+    dice.display_dice(
+            dicelist[0], 
+            dicelist[1], 
+            dicelist[2],
+            dicelist[3],
+            dicelist[4],
+    )
+    # Work out the solution.
+    score = 0
+    for i in dicelist:
+        if i == 3:
+            score += 2
+        elif i == 5:
+            score += 4
+        else:
+            score += 0
+    # Prompt for and read the user's guess.
+    guess = int(input('Please enter your guess for the roll: '))
+    if guess == score:
+        print('Well done! You guessed it!')
+    else:
+        if guess % 2 == 0:
+            print(f'No sorry, it\'s {score} not {guess}.')
+        else:
+            print(f'No sorry, it\'s {score} not {guess}. The score is always even.')
+    # Repeat the game.
+    repeat = input('\nRoll dice again [y|n]? ')
+
