@@ -92,13 +92,13 @@ while start.lower() in ['y', 'yes']:
             print(f'No sorry, it\'s {SCORE} not {GUESS}. The score is always even.')
 
     # Repeat the game.
-    repeat = input('\nRoll dice again [y|n]? ')
+    start = input('\nRoll dice again [y|n]? ')
 
-    while repeat.lower() not in ['y', 'yes', 'n', 'no']:
+    while start.lower() not in ['y', 'yes', 'n', 'no']:
         print("Please enter either 'y' or 'n'.")
-        repeat = input('\nRoll dice again [y|n]? ')
+        start = input('\nRoll dice again [y|n]? ')
 
-    while repeat.lower() in ['y', 'yes']:
+    while start.lower() in ['y', 'yes']:
         # The game starts over.
         ROUND += 1
         # Create an empty to store 5 randomly generated dice rolls.
