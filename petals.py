@@ -13,6 +13,9 @@ import dice
 import random
 
 
+# Create a variable to keep track of how many games will be played.
+COUNT = 0
+
 # Create an empty to store 5 randomly generated dice rolls.
 dicelist = []
 for _ in range(5):
@@ -44,25 +47,25 @@ become a Potentate of the Rose.
 )
 
 # Work out the solution.
-score = 0
+SCORE = 0
 for i in dicelist:
     if i == 3:
-        score += 2
+        SCORE += 2
     elif i == 5:
-        score += 4
+        SCORE += 4
     else:
-        score += 0
+        SCORE += 0
 
 # Prompt for and read the user's guess.
-guess = int(input('Please enter your guess for the roll: '))
+GUESS = int(input('Please enter your guess for the roll: '))
 
-if guess == score:
+if GUESS == SCORE:
     print('Well done! You guessed it!')
 else:
-    if guess % 2 == 0:
-        print(f'No sorry, it\'s {score} not {guess}.')
+    if GUESS % 2 == 0:
+        print(f'No sorry, it\'s {SCORE} not {GUESS}.')
     else:
-        print(f'No sorry, it\'s {score} not {guess}. The score is always even.')
+        print(f'No sorry, it\'s {SCORE} not {GUESS}. The score is always even.')
 
 # Repeat the game.
 repeat = input('\nRoll dice again [y|n]? ')
@@ -82,23 +85,23 @@ while repeat.lower() in ['y', 'yes']:
             dicelist[4],
     )
     # Work out the solution.
-    score = 0
+    SCORE = 0
     for i in dicelist:
         if i == 3:
-            score += 2
+            SCORE += 2
         elif i == 5:
-            score += 4
+            SCORE += 4
         else:
-            score += 0
+            SCORE += 0
     # Prompt for and read the user's guess.
     guess = int(input('Please enter your guess for the roll: '))
-    if guess == score:
+    if GUESS == SCORE:
         print('Well done! You guessed it!')
     else:
-        if guess % 2 == 0:
-            print(f'No sorry, it\'s {score} not {guess}.')
+        if GUESS % 2 == 0:
+            print(f'No sorry, it\'s {SCORE} not {GUESS}.')
         else:
-            print(f'No sorry, it\'s {score} not {guess}. The score is always even.')
+            print(f'No sorry, it\'s {SCORE} not {GUESS}. The score is always even.')
     # Repeat the game.
     repeat = input('\nRoll dice again [y|n]? ')
 
