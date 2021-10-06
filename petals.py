@@ -10,8 +10,25 @@
 #   from a third party and without using any aids other than those cited.
 
 import dice
-dice.display_dice(2,3,4,5,6)
+import random
 
+
+# Create an empty to store 5 randomly generated dice rolls.
+dicelist = []
+for _ in range(5):
+    i = random.randint(1, 6)
+    dicelist.append(i)
+
+# Call a function to display the randomly generated dice rolls to the screen.
+dice.display_dice(
+        dicelist[0], 
+        dicelist[1], 
+        dicelist[2],
+        dicelist[3],
+        dicelist[4],
+)
+
+# Print the game introduction.
 print(
 """
 Petals Around the Rose
