@@ -28,7 +28,7 @@ become a Potentate of the Rose.
 """
 )
 
-# Create 3 variables to keep track of how many games will be played.
+# Create 5 variables to keep track of how many games will be played.
 ROUND = 0
 CONSECUTIVE_CORRECT = 0
 CONSECUTIVE_INCORRECT = 0
