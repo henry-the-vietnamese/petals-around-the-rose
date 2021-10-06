@@ -28,7 +28,7 @@ dice.display_dice(
         dicelist[4],
 )
 
-# Print the game introduction.
+# Display the game introduction.
 print(
 """
 Petals Around the Rose
@@ -42,3 +42,25 @@ working out the secret and guess correctly four times in a row, you
 become a Potentate of the Rose.
 """
 )
+
+# Work out the solution.
+score = 0
+for i in dicelist:
+    if i == 3:
+        score += 2
+    elif i == 5:
+        score += 4
+    else:
+        score += 0
+
+# Prompt for and read the user's guess.
+guess = int(input('Please enter your guess for the roll: '))
+
+if guess == score:
+    print('Well done! You guessed it!')
+else:
+    if guess % 2 == 0:
+        print(f'No sorry, it\'s {score} not {guess}.')
+    else:
+        print(f'No sorry, it\'s {score} not {guess}. The score is always even.')
+
