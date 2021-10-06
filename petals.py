@@ -162,16 +162,19 @@ while start.lower() in ['y', 'yes']:
         repeat = input('\nRoll dice again [y|n]? ')
 
 # Game summary.
-print(
-f"""
+if ROUND !=  0:
+    print(
+    f"""
 
-Game Summary
-============
+    Game Summary
+    ============
 
-You played {ROUND} games:
-  |--> Number of correct guesses: {FINAL_CORRECT}
-  |--> Number of incorrect guesses: {FINAL_INCORRECT}
+    You played {ROUND} games:
+      |--> Number of correct guesses: {FINAL_CORRECT}
+      |--> Number of incorrect guesses: {FINAL_INCORRECT}
 
-Thanks for playing!
-"""
-)
+    Thanks for playing!
+    """
+    )
+else:
+    print('\nNo worries... another time perhaps... :)')
