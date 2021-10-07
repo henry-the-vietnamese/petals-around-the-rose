@@ -147,11 +147,9 @@ while start.lower() in ['y', 'yes']:
         # Now the guesses are consecutive.
         if len(consecutive) == 4:
             if 'correct' in consecutive and 'incorrect' not in consecutive:
-                print(
-                """
-                Congratulations! You have worked out the secret!
-                Make sure you don't tell anyone!
-                """
+                print('Congratulations! You have worked out the secret!',
+                      'Make sure you don\'t tell anyone!',
+                      sep = '\n',
                 )
             elif 'incorrect' in consecutive and 'correct' not in consecutive:
                 print('Hint: The name of the game is important... Petals Around the Rose.')
