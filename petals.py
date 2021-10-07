@@ -157,7 +157,7 @@ while start.lower() in ['y', 'yes']:
             CONSECUTIVE_INCORRECT = 0
             consecutive.clear()
         # Repeat the game.
-        repeat = input('\nRoll dice again [y|n]? ')
+        start = input('\nRoll dice again [y|n]? ')
 
 # Game summary.
 if ROUND !=  0:
