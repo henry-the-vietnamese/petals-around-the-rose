@@ -28,12 +28,12 @@ become a Potentate of the Rose.
 """
 )
 
-# Create 5 variables to keep track of how many games will be played.
-ROUND = 0
-CONSECUTIVE_CORRECT = 0
-CONSECUTIVE_INCORRECT = 0
-FINAL_CORRECT = 0
-FINAL_INCORRECT = 0
+# Create 5 variables to keep track of the flow of the game.
+ROUND = 0                   # The numebr of games will be played.
+CONSECUTIVE_CORRECT = 0     # The number of consecutive correct guesses.
+CONSECUTIVE_INCORRECT = 0   # The number of consecutive incorrect guesses.
+FINAL_CORRECT = 0           # The total number of correct tguesses.
+FINAL_INCORRECT = 0         # The total number of incorrect tguesses.
 
 # Create a list to keep track of correct or incorrect guesses in a row.
 consecutive = []
@@ -49,13 +49,13 @@ while start.lower() in ['y', 'yes']:
     # Start the game.
     ROUND += 1
 
-    # Create an empty to store 5 randomly generated dice rolls.
+    # Create an empty list to store 5 randomly generated dice rolls.
     dicelist = []
     for _ in range(5):
         i = random.randint(1, 6)
         dicelist.append(i)
 
-    # Call a function to display the randomly generated dice rolls to the screen.
+    # Call the predefined function to display the randomly generated dice rolls to the screen.
     dice.display_dice(
             dicelist[0], 
             dicelist[1], 
@@ -71,7 +71,7 @@ while start.lower() in ['y', 'yes']:
             SCORE += 2
         elif i == 5:
             SCORE += 4
-        else:
+        else:               # i = 2, 4, 6
             SCORE += 0
 
     # Prompt for and read the user's guess.
@@ -101,12 +101,12 @@ while start.lower() in ['y', 'yes']:
     while start.lower() in ['y', 'yes']:
         # The game starts over.
         ROUND += 1
-        # Create an empty to store 5 randomly generated dice rolls.
+        # Create an empty list to store 5 randomly generated dice rolls.
         dicelist = []
         for _ in range(5):
             i = random.randint(1, 6)
             dicelist.append(i)
-        # Call a function to display the randomly generated dice rolls to the screen.
+        # Call the predefined function to display the randomly generated dice rolls to the screen.
         dice.display_dice(
                 dicelist[0], 
                 dicelist[1], 
