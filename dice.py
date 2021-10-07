@@ -1,17 +1,26 @@
+#!/usr/bin/env python3
+
 #
-# Petals Around the Rose.
-# Dice module - PSP Assignment 1, 2018.
+# File:         dice.py
+# Author:       Tan Duc Mai
+# Email:        tan.duc.work@gmail.com
+# Date:         6/10/2021
+# Description:  Display the face value of dice to the screen.
+#   I hereby declare that I completed this work without any improper help
+#   from a third party and without using any aids other than those cited.
 #
 
-# Function to display the face value of dice to the screen.
-# This function takes five parameters (the values of the five die to display) and
-# displays the dice to the screen.
-# Parameters:  Five die face values, die1, die2, die3, die4, die5.
-# Returns: Nothing is returned from the function.
+
 def display_dice(die1, die2, die3, die4, die5):
+    """This function was originally proposed by my lecturer - Mr Seo.
 
+    Function to display the face value of dice to the screen.
+    This function takes five parameters (the values of the five die to display) and displays the dice to the screen.
+    Parameters:  Five die face values, die1, die2, die3, die4, die5.
+    Returns: Nothing is returned from the function.
     dice = [die1, die2, die3, die4, die5]    # list to store die values
-    
+    """
+
     # Display die number to the screen.
     print("\n")
     print(format("", '<5s'), end='')
@@ -58,5 +67,3 @@ def display_dice(die1, die2, die3, die4, die5):
             print(format("* *", '<10s'), end='')
     print()
     print("\n\n")
-
-    
