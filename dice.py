@@ -18,8 +18,9 @@ def display_dice(die1, die2, die3, die4, die5):
     This function takes five parameters (the values of the five die to display) and displays the dice to the screen.
     Parameters:  Five die face values, die1, die2, die3, die4, die5.
     Returns: Nothing is returned from the function.
-    dice = [die1, die2, die3, die4, die5]    # list to store die values
     """
+    
+    dice = [die1, die2, die3, die4, die5]    # list to store die values
 
     # Display die number to the screen.
     print("\n")
