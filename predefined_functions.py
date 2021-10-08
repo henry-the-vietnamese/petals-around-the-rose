@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 
 #
-# File:         petals.py
+# File:         game_body.py
 # Author:       Tan Duc Mai
 # Email:        tan.duc.work@gmail.com
 # Date:         6/10/2021
-# Description:  The CPU of the game, working out whether the user wins/loses.
+# Description:  The CPU of the game, working out whether the user wins/loses and determining consecutive guesses.
 #   I hereby declare that I completed this work without any improper help
 #   from a third party and without using any aids other than those cited.
 
