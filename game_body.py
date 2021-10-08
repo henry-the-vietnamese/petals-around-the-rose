@@ -60,7 +60,7 @@ def GamePlay(ROUND, CONSECUTIVE_CORRECT, CONSECUTIVE_INCORRECT, FINAL_CORRECT, F
 
     # Check for four consecutive guesses.
     if ['correct', 'incorrect'] in consecutive:
-        # Reset to 0 if correct or incorrect guesses are not consecutive.
+        # Reset variables to 0 when correct or incorrect guesses are not consecutive.
         CONSECUTIVE_CORRECT = 0
         CONSECUTIVE_INCORRECT = 0
         consecutive.clear()
@@ -74,6 +74,7 @@ def GamePlay(ROUND, CONSECUTIVE_CORRECT, CONSECUTIVE_INCORRECT, FINAL_CORRECT, F
             )
         elif 'incorrect' in consecutive and 'correct' not in consecutive:
             print('Hint: The name of the game is important... Petals Around the Rose.')
+        # Reset variables to 0 after displaying messages about consecutive guesses.
         CONSECUTIVE_CORRECT = 0
         CONSECUTIVE_INCORRECT = 0
         consecutive.clear()
