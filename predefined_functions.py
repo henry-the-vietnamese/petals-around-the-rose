@@ -69,7 +69,7 @@ def GamePlay(ROUND, CONSECUTIVE_CORRECT, CONSECUTIVE_INCORRECT, FINAL_CORRECT, F
     # Now the guesses are consecutive.
     if len(consecutive) == 4:
         if 'correct' in consecutive and 'incorrect' not in consecutive:
-            print('Congratulations! You have worked out the secret!',
+            print('\nCongratulations! You have worked out the secret!',
                   'Make sure you don\'t tell anyone!',
                   sep = '\n',
             )
