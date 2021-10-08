@@ -31,18 +31,18 @@ def GamePlay(ROUND, CONSECUTIVE_CORRECT, CONSECUTIVE_INCORRECT, FINAL_CORRECT, F
             dicelist[4],
     )
 
-    # Work out the solution.
+    # Work out the answer.
     SCORE = 0
-    for i in dicelist:
-        if i == 3:
+    for face_value in dicelist:
+        if face_value == 3:
             SCORE += 2
-        elif i == 5:
+        elif face_value == 5:
             SCORE += 4
-        else:               # i = 2, 4, 6
+        else:               # face_value = 2, 4, 6
             SCORE += 0
 
     # Prompt for and read the user's guess.
-    GUESS = int(input('Please enter your guess for the roll: '))
+    GUESS = input('Please enter your guess for the roll: ')
 
     if GUESS == SCORE:
         CONSECUTIVE_CORRECT += 1
