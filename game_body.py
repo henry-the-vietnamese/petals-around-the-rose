@@ -20,8 +20,7 @@ def GamePlay(ROUND, CONSECUTIVE_CORRECT, CONSECUTIVE_INCORRECT, FINAL_CORRECT, F
     # Create an empty list to store 5 randomly generated dice rolls.
     dicelist = []
     for _ in range(5):
-        i = random.randint(1, 6)
-        dicelist.append(i)
+        dicelist.append(random.randint(1, 6))
 
     # Call the predefined function to display the randomly generated dice rolls to the screen.
     dice.display_dice(
