@@ -6,6 +6,7 @@
 # Email:        tan.duc.work@gmail.com
 # Date:         6/10/2021
 # Description:  Build a mathematical challenging puzzle - Petals Around The Rose.
+#               This is the main interface of the puzzle.
 #   I hereby declare that I completed this work without any improper help
 #   from a third party and without using any aids other than those cited.
 
