@@ -35,7 +35,7 @@ ROUND = 0                   # The numebr of games will be played.
 CONSECUTIVE_CORRECT = 0     # The number of consecutive correct guesses.
 CONSECUTIVE_INCORRECT = 0   # The number of consecutive incorrect guesses.
 FINAL_CORRECT = 0           # The total number of correct guesses.
-FINAL_INCORRECT = 0         # The total number of incorrect tguesses.
+FINAL_INCORRECT = 0         # The total number of incorrect guesses.
 
 # Create an empty list to keep track of correct or incorrect guesses in a row.
 consecutive = []
