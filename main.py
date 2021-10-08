@@ -29,11 +29,11 @@ become a Potentate of the Rose.
 )
 
 # Create 5 variables to keep track of the flow of the game.
-ROUND = 0                   # The numebr of games will be played.
+ROUND = 0                   # The number of games will be played.
 CONSECUTIVE_CORRECT = 0     # The number of consecutive correct guesses.
 CONSECUTIVE_INCORRECT = 0   # The number of consecutive incorrect guesses.
-FINAL_CORRECT = 0           # The total number of correct guesses.
-FINAL_INCORRECT = 0         # The total number of incorrect guesses.
+FINAL_CORRECT = 0           # The number of correct guesses in total.
+FINAL_INCORRECT = 0         # The number of incorrect guesses in total.
 
 # Create an empty list to keep track of correct or incorrect guesses in a row.
 consecutive = []
