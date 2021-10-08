@@ -10,16 +10,14 @@
 #   I hereby declare that I completed this work without any improper help
 #   from a third party and without using any aids other than those cited.
 
+import dice
+import random
 from predefined_functions import GamePlay
 
 
 # Display the game introduction.
 print(
-README.md
-__pycache__
-dice.py
-game_body.py
-main.py
+"""
 Petals Around the Rose
 ----------------------
 The name of the game is 'Petals Around the Rose'. The name of the
