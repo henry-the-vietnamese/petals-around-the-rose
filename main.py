@@ -47,20 +47,15 @@ while start.lower() not in ['y', 'yes', 'n', 'no']:
     print("Please enter either 'y' or 'n'.")
     start = input('\nWould you like to play Petals Around the Rose [y|n]? ')
 
-if start.lower() in ['y', 'yes']:
+while start.lower() in ['y', 'yes']:
     ROUND, CONSECUTIVE_CORRECT, CONSECUTIVE_INCORRECT, FINAL_CORRECT, FINAL_INCORRECT, consecutive = GamePlay(ROUND, CONSECUTIVE_CORRECT, CONSECUTIVE_INCORRECT, FINAL_CORRECT, FINAL_INCORRECT, consecutive)
 
     # Repeat the game.
-    repeat = input('\nRoll dice again [y|n]? ')
+    start = input('\nRoll dice again [y|n]? ')
 
-    while repeat.lower() not in ['y', 'yes', 'n', 'no']:
+    while start.lower() not in ['y', 'yes', 'n', 'no']:
         print("Please enter either 'y' or 'n'.")
-        repeat = input('\nRoll dice again [y|n]? ')
-
-    while repeat.lower() in ['y', 'yes']:
-        ROUND, CONSECUTIVE_CORRECT, CONSECUTIVE_INCORRECT, FINAL_CORRECT, FINAL_INCORRECT, consecutive = GamePlay(ROUND, CONSECUTIVE_CORRECT, CONSECUTIVE_INCORRECT, FINAL_CORRECT, FINAL_INCORRECT, consecutive)
-        # Repeat the game.
-        repeat = input('\nRoll dice again [y|n]? ')
+        start = input('\nRoll dice again [y|n]? ')
 
 # Game summary.
 if ROUND !=  0:
