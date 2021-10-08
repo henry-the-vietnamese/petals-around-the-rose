@@ -34,13 +34,13 @@ become a Potentate of the Rose.
 ROUND = 0                   # The numebr of games will be played.
 CONSECUTIVE_CORRECT = 0     # The number of consecutive correct guesses.
 CONSECUTIVE_INCORRECT = 0   # The number of consecutive incorrect guesses.
-FINAL_CORRECT = 0           # The total number of correct tguesses.
+FINAL_CORRECT = 0           # The total number of correct guesses.
 FINAL_INCORRECT = 0         # The total number of incorrect tguesses.
 
-# Create a list to keep track of correct or incorrect guesses in a row.
+# Create an empty list to keep track of correct or incorrect guesses in a row.
 consecutive = []
 
-# Ask if the user wants to reset playing.
+# Ask if the user wants to start the game.
 start = input('\nWould you like to play Petals Around the Rose [y|n]? ')
 
 while start.lower() not in ['y', 'yes', 'n', 'no']:
