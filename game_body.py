@@ -9,8 +9,8 @@
 #   I hereby declare that I completed this work without any improper help
 #   from a third party and without using any aids other than those cited.
 
-import dice
 import random
+import dice
 
 
 def GamePlay(ROUND, CONSECUTIVE_CORRECT, CONSECUTIVE_INCORRECT, FINAL_CORRECT, FINAL_INCORRECT, consecutive):
