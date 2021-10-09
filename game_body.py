@@ -20,6 +20,13 @@ import dice
 
 
 def GamePlay(ROUND, CONSECUTIVE_CORRECT, CONSECUTIVE_INCORRECT, FINAL_CORRECT, FINAL_INCORRECT, consecutive):
+    """
+     The predefined game_body module consists of the GamePlay function which calls another predefined module to display the face values of the dice to the screen, works out the answer to the game, prompts for and evaluates user guesses, checks for four consecutive guesses.
+     This function takes six parameters which are responsible for keeping track of the flow of the game.
+     Parameters: ROUND, CONSECUTIVE_CORRECT, CONSECUTIVE_INCORRECT, FINAL_CORRECT, FINAL_INCORRECT, consecutive.
+     Returns: All of the six mentioned parameters are returned from the function so that the function can be reused if the user opts to replay the game.
+    """
+
     # Start the game.
     ROUND += 1
 
