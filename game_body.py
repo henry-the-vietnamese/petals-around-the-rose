@@ -55,7 +55,7 @@ def GamePlay(ROUND, CONSECUTIVE_CORRECT, CONSECUTIVE_INCORRECT, FINAL_CORRECT, F
             SCORE += 0
 
     # Prompt for and read the user's guess.
-    GUESS = input('Please enter your guess for the roll: ')
+    GUESS = validate_guess()
 
     if GUESS == SCORE:
         CONSECUTIVE_CORRECT += 1
@@ -94,3 +94,13 @@ def GamePlay(ROUND, CONSECUTIVE_CORRECT, CONSECUTIVE_INCORRECT, FINAL_CORRECT, F
 
     # A fruitful function.
     return ROUND, CONSECUTIVE_CORRECT, CONSECUTIVE_INCORRECT, FINAL_CORRECT, FINAL_INCORRECT, consecutive
+
+
+def validate_guess():
+    try:
+        GUESS = int(input('Please enter your guess for the roll: '))
+    except ValueError:
+        print('Invalid value! The face value of a die is an integer data type.\n')
+        GUESS = validate_guess()
+    finally:
+        return GUESS
