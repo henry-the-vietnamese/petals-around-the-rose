@@ -16,10 +16,10 @@ def display_dice(die1, die2, die3, die4, die5):
 
     Function to display the face value of dice to the screen.
     This function takes five parameters (the values of the five die to display) and displays the dice to the screen.
-    Parameters:  Five die face values, die1, die2, die3, die4, die5.
+    Parameters: Five die face values, die1, die2, die3, die4, die5.
     Returns: Nothing is returned from the function.
     """
-    
+
     dice = [die1, die2, die3, die4, die5]    # list to store die values
 
     # Display die number to the screen.
@@ -48,7 +48,7 @@ def display_dice(die1, die2, die3, die4, die5):
 
     # Display the middle row of face value to the screen.
     print(format("", '<6s'), end='')
-    for i in range(5):       
+    for i in range(5):
         if dice[i] == 1 or dice[i] == 3 or dice[i] == 5:
            print(format(" *", '<10s'), end='')
         elif dice[i] == 6:
