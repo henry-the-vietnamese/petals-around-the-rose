@@ -10,6 +10,10 @@
 #   I hereby declare that I completed this work without any improper help
 #   from a third party and without using any aids other than those cited.
 
+"""
+The predefined game_body module consists of the GamePlay function which calls another predefined module to display the face values of the dice to the screen, works out the answer to the game, prompts for and evaluates user guesses, and checks for four consecutive guesses.
+"""
+
 from game_body import GamePlay
 
 
