@@ -54,7 +54,7 @@ def GamePlay(ROUND, CONSECUTIVE_CORRECT, CONSECUTIVE_INCORRECT, FINAL_CORRECT, F
         else:               # face_value = 2, 4, 6
             SCORE += 0
 
-    # Prompt for and read the user's guess.
+    # Prompt for and read the user guess.
     GUESS = ValidGuess()
 
     if GUESS == SCORE:
