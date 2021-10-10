@@ -98,7 +98,7 @@ def GamePlay(ROUND, CONSECUTIVE_CORRECT, CONSECUTIVE_INCORRECT, FINAL_CORRECT, F
 
 def ValidGuess():
     """
-    Function to validate the user guess. Creating this function allows the validation (using try/except/finally) to continuously repeats.
+    Function to validate the user guess. Creating this function allows the validation (using try/except/finally) to continuously repeats until a valid guess is made.
     This function tales no parameters, as well as no global variables.
     Returns: the finally valid guess is returned.
     """
