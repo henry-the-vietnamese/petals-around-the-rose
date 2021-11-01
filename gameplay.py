@@ -22,10 +22,18 @@ import dice
 
 
 def guess_validation():
-    """
-    Function to validate the user guess. Creating this function allows the validation (using try/except/finally) to continuously repeats until a valid guess is made.
-    This function takes no parameters, as well as no global variables.
-    Returns: the finally valid guess is returned.
+    """Docstring for the function guess_validation().
+    
+    Validate guess from the user which should be an intger.
+
+    Parameters
+    ----------
+    None
+
+    Returns
+    -------
+    int
+        The valid user guess for the game.
     """
     try:
         GUESS = int(input('Please enter your guess for the roll: '))
@@ -37,11 +45,30 @@ def guess_validation():
 
 
 def start_game(ROUND, CONSECUTIVE_CORRECT, CONSECUTIVE_INCORRECT, FINAL_CORRECT, FINAL_INCORRECT, consecutive):
-    """
-    Function to act as the brain of the puzzle/game. It calls a predefined module called dice.py to display the face values of the dice to the screen, works out the answer to the game, prompts for and evaluates user guesses, checks for four consecutive guesses.
-    This function takes six parameters which are responsible for keeping track of the flow of the game.
-    Parameters: ROUND, CONSECUTIVE_CORRECT, CONSECUTIVE_INCORRECT, FINAL_CORRECT, FINAL_INCORRECT, consecutive.
-    Returns: All of the six mentioned parameters are returned from the function so that the function can be reused if the user opts to replay the game.
+    """Docstring for the function start_game()
+    
+    The CPU of the game. 
+    It also calls the predefined called dice.py to display the face values of the dice to the screen, 
+    works out the answer to the game, prompts the user for guesses and evaluates them, 
+    checks for four consecutive guesses.
+    
+    Parameters
+    ----------
+    ROUND
+    CONSECUTIVE_CORRECT
+    CONSECUTIVE_INCORRECT
+    FINAL_CORRECT
+    FINAL_INCORRECT
+    consecutive
+
+    Returns
+    -------
+    ROUND
+    CONSECUTIVE_CORRECT
+    CONSECUTIVE_INCORRECT
+    FINAL_CORRECT
+    FINAL_INCORRECT
+    consecutive
     """
     # Start the game.
     ROUND += 1
