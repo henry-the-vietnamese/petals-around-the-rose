@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 #
-# File:         game_body.py
+# File:         gameplay.py
 # Author:       Tan Duc Mai
 # Email:        tan.duc.work@gmail.com
 # Date:         6/10/2021
@@ -52,15 +52,15 @@ def start_game(ROUND, CONSECUTIVE_CORRECT, CONSECUTIVE_INCORRECT, FINAL_CORRECT,
 
     # Call the predefined function to display the randomly generated dice rolls to the screen.
     dice.display_dice(
-            dice_list[0],
-            dice_list[1],
-            dice_list[2],
-            dice_list[3],
-            dice_list[4],
+        dice_list[0],
+        dice_list[1],
+        dice_list[2],
+        dice_list[3],
+        dice_list[4],
     )
 
     # Work out the answer.
-    SCORE = 0
+    SCORE = 0               # Score starts with 0.
     for face_value in dice_list:
         if face_value == 3:
             SCORE += 2
@@ -70,6 +70,7 @@ def start_game(ROUND, CONSECUTIVE_CORRECT, CONSECUTIVE_INCORRECT, FINAL_CORRECT,
             SCORE += 0
 
     # Prompt for and read the user guess.
+    # The called function will validate the guess.
     GUESS = guess_validation()
 
     if GUESS == SCORE:
@@ -107,5 +108,5 @@ def start_game(ROUND, CONSECUTIVE_CORRECT, CONSECUTIVE_INCORRECT, FINAL_CORRECT,
         CONSECUTIVE_INCORRECT = 0
         consecutive.clear()
 
-    # A fruitful function.
+    # Returns. 
     return ROUND, CONSECUTIVE_CORRECT, CONSECUTIVE_INCORRECT, FINAL_CORRECT, FINAL_INCORRECT, consecutive
