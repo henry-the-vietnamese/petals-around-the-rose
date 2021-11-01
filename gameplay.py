@@ -72,7 +72,7 @@ def start_game(ROUND, CONSECUTIVE_CORRECT, CONSECUTIVE_INCORRECT, FINAL_CORRECT,
             print(f'No sorry, it\'s {SCORE} not {GUESS}. The score is always even.')
 
     # Check for four consecutive guesses.
-    if ['correct', 'incorrect'] in consecutive:
+    if 'correct' in consecutive and 'incorrect' in consecutive:
         # Reset variables to 0 when correct or incorrect guesses are not consecutive.
         CONSECUTIVE_CORRECT = 0
         CONSECUTIVE_INCORRECT = 0
