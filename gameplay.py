@@ -24,7 +24,7 @@ import dice
 def guess_validation():
     """Docstring for the function guess_validation().
     
-    Validate guess from the user which should be an intger.
+    Validate guess from the user which should be an integer.
 
     Parameters
     ----------
