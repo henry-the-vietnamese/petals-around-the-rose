@@ -34,7 +34,7 @@ become a Potentate of the Rose.
 """
 )
 
-# Create 5 variables to keep track of the flow of the game.
+# Create five variables to keep track of the flow of the game.
 ROUND = 0                   # The number of games will be played.
 CONSECUTIVE_CORRECT = 0     # The number of consecutive correct guesses.
 CONSECUTIVE_INCORRECT = 0   # The number of consecutive incorrect guesses.
@@ -47,20 +47,23 @@ consecutive = []
 # Ask if the user wants to start the game.
 start = input('\nWould you like to play Petals Around the Rose [y|n]? ')
 
-# Input validation, should be either yes or no.
+# Input validation, should be either 'yes' or 'no'.
 while start.lower() not in ['y', 'yes', 'n', 'no']:
     print("Please enter either 'y' or 'n'.")
     start = input('\nWould you like to play Petals Around the Rose [y|n]? ')
 
-# Start the game if the user says yes.
+# Start the game if the user says 'yes'.
 while start.lower() not in ['n', 'no']:
-    ROUND, CONSECUTIVE_CORRECT, 
-    CONSECUTIVE_INCORRECT, FINAL_CORRECT, 
-    FINAL_INCORRECT, consecutive = start_game(
-                                       ROUND, CONSECUTIVE_CORRECT, 
-                                       CONSECUTIVE_INCORRECT, FINAL_CORRECT, 
-                                       FINAL_INCORRECT, consecutive
-                                   )
+    # New values are assigned to the same variables
+    # so that the game can run again with numbers
+    # keep being counted.
+    (ROUND, CONSECUTIVE_CORRECT,
+     CONSECUTIVE_INCORRECT, FINAL_CORRECT,
+     FINAL_INCORRECT, consecutive) = start_game(
+                                         ROUND, CONSECUTIVE_CORRECT, 
+                                         CONSECUTIVE_INCORRECT, FINAL_CORRECT, 
+                                         FINAL_INCORRECT, consecutive,
+                                     )
 
     # Ask if the user wants to repeat the game.
     start = input('\nRoll dice again [y|n]? ')
@@ -71,7 +74,7 @@ while start.lower() not in ['n', 'no']:
         start = input('\nRoll dice again [y|n]? ')
 
 # Game summary.
-if ROUND !=  0:
+if ROUND != 0:
     print(
     f"""
 

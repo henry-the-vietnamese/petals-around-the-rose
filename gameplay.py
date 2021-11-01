@@ -15,7 +15,9 @@
 """
 The random module generates 'pseudo-random' numbers - face values on the dice.
 The predefined dice module displays the face value of dice to the screen.
-Generally, the random module gives the face of each die a value which is displayed to the screen using the dice module.
+
+Generally, the random module gives the face of each die a value 
+which is displayed to the screen using the dice module.
 """
 import random
 import dice
@@ -47,37 +49,62 @@ def start_game(
     """Docstring for the function start_game()
     
     The CPU of the game. 
-    It also calls the predefined called dice.py to display the face values of the dice to the screen, 
-    works out the answer to the game, prompts the user for guesses and evaluates them, 
-    checks for four consecutive guesses.
+    It also calls the predefined called dice.py to 
+    display the face values of the dice to the screen, 
+    work out the answer to the game, 
+    prompt the user for guesses and evaluate them,
+    check for four consecutive guesses.
     
     Parameters
     ----------
-    ROUND
-    CONSECUTIVE_CORRECT
-    CONSECUTIVE_INCORRECT
-    FINAL_CORRECT
-    FINAL_INCORRECT
-    consecutive
+    ROUND : int
+        The number of games will be played.
+    CONSECUTIVE_CORRECT : int
+        The number of consecutive correct guesses.
+    CONSECUTIVE_INCORRECT : int
+        The number of consecutive incorrect guesses.
+    FINAL_CORRECT : int
+        The number of correct guesses in total.
+    FINAL_INCORRECT : int
+        The number of incorrect guesses in total.
+    consecutive : list
+        The list storing either 'correct' and 'incorrect'
+        to keep track of consecutive 
+        correct or incorrect guesses.
 
     Returns
     -------
-    ROUND
-    CONSECUTIVE_CORRECT
-    CONSECUTIVE_INCORRECT
-    FINAL_CORRECT
-    FINAL_INCORRECT
-    consecutive
+    ROUND : int
+        The number of games the user has played up to this point.
+    CONSECUTIVE_CORRECT : int
+        The number of consecutive correct guesses
+        the user has received up to this point.
+    CONSECUTIVE_INCORRECT : int
+        The number of consecutive incorrect guesses
+        the user has received up to this point.
+    FINAL_CORRECT : int
+        The number of correct guesses in total.
+    FINAL_INCORRECT : int
+        The number of incorrect guesses in total.
+    consecutive :list
+        The elements contained are either 'correct' or
+        'incorrect' which will then be used to 
+        compare whether correct or incorrect 
+        guesses are consecutive.
+        It might be empty if the correct or incorrect
+        guesses are not consecutive.
     """
     # Start the game.
     ROUND += 1
 
-    # Create an empty list to store 5 randomly generated dice rolls.
+    # Initialise an empty list to store 
+    # five randomly generated dice rolls.
     dice_list = []
     for _ in range(5):
         dice_list.append(random.randint(1, 6))
 
-    # Call the predefined function to display the randomly generated dice rolls to the screen.
+    # Call the predefined function to display 
+    # the randomly generated dice rolls to the screen.
     dice.display_dice(
         dice_list[0],
         dice_list[1],
@@ -115,8 +142,9 @@ def start_game(
             print(f'No sorry, it\'s {SCORE} not {GUESS}. The score is always even.')
 
     # Check for four consecutive guesses.
-    if 'correct' in consecutive and 'incorrect' in consecutive:
-        # Reset variables to 0 when correct or incorrect guesses are not consecutive.
+    if ('correct' in consecutive) and ('incorrect' in consecutive):
+        # Reset variables to 0 and empty the list
+        # when correct or incorrect guesses are not consecutive.
         CONSECUTIVE_CORRECT = 0
         CONSECUTIVE_INCORRECT = 0
         consecutive.clear()
@@ -126,14 +154,19 @@ def start_game(
         if 'correct' in consecutive and 'incorrect' not in consecutive:
             print('\nCongratulations! You have worked out the secret!',
                   'Make sure you don\'t tell anyone!',
-                   sep='\n',
+                  sep='\n',
             )
-        elif 'incorrect' in consecutive and 'correct' not in consecutive:
+        elif ('incorrect' in consecutive) and ('correct' not in consecutive):
             print('Hint: The name of the game is important... Petals Around the Rose.')
-        # Reset variables to 0 after displaying messages about consecutive guesses.
+        # Reset variables to 0 and empty the list 
+        # after displaying messages about consecutive guesses.
         CONSECUTIVE_CORRECT = 0
         CONSECUTIVE_INCORRECT = 0
         consecutive.clear()
 
     # Returns. 
-    return ROUND, CONSECUTIVE_CORRECT, CONSECUTIVE_INCORRECT, FINAL_CORRECT, FINAL_INCORRECT, consecutive
+    return (
+        ROUND, CONSECUTIVE_CORRECT, 
+        CONSECUTIVE_INCORRECT, FINAL_CORRECT, 
+        FINAL_INCORRECT, consecutive,
+    )
