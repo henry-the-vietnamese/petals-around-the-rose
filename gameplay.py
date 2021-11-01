@@ -26,10 +26,6 @@ def guess_validation():
     
     Validate guess from the user which should be an integer.
 
-    Parameters
-    ----------
-    None
-
     Returns
     -------
     int
@@ -127,7 +123,7 @@ def start_game(ROUND, CONSECUTIVE_CORRECT, CONSECUTIVE_INCORRECT, FINAL_CORRECT,
         if 'correct' in consecutive and 'incorrect' not in consecutive:
             print('\nCongratulations! You have worked out the secret!',
                   'Make sure you don\'t tell anyone!',
-                  sep = '\n',
+                   sep='\n',
             )
         elif 'incorrect' in consecutive and 'correct' not in consecutive:
             print('Hint: The name of the game is important... Petals Around the Rose.')
