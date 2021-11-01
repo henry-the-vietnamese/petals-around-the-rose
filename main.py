@@ -46,16 +46,19 @@ consecutive = []
 # Ask if the user wants to start the game.
 start = input('\nWould you like to play Petals Around the Rose [y|n]? ')
 
+# Input validation, should be either yes or no.
 while start.lower() not in ['y', 'yes', 'n', 'no']:
     print("Please enter either 'y' or 'n'.")
     start = input('\nWould you like to play Petals Around the Rose [y|n]? ')
 
-while start.lower() in ['y', 'yes']:
+# Start the game if the user says yes.
+while start.lower() not in ['n', 'no']:
     ROUND, CONSECUTIVE_CORRECT, CONSECUTIVE_INCORRECT, FINAL_CORRECT, FINAL_INCORRECT, consecutive = start_game(ROUND, CONSECUTIVE_CORRECT, CONSECUTIVE_INCORRECT, FINAL_CORRECT, FINAL_INCORRECT, consecutive)
 
-    # Repeat the game.
+    # Ask if the user wants to repeat the game.
     start = input('\nRoll dice again [y|n]? ')
-
+    
+    # Input validation, should be either yes or no.
     while start.lower() not in ['y', 'yes', 'n', 'no']:
         print("Please enter either 'y' or 'n'.")
         start = input('\nRoll dice again [y|n]? ')
