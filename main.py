@@ -5,17 +5,23 @@
 # Author:       Tan Duc Mai
 # Email:        tan.duc.work@gmail.com
 # Date:         6/10/2021
-# Description:  Build a mathematical challenging puzzle - Petals Around The Rose.
-#               This is the main interface of the puzzle.
+# Description:  Build a mathematical challenging puzzle/game -
+#               Petals Around The Rose.
+#               This is the main interface of the game.
 #   I hereby declare that I completed this work without any improper help
 #   from a third party and without using any aids other than those cited.
 
 
 """
-The predefined gameplay module consists of the start_game function which calls another predefined module to display the face values of the dice to the screen, works out the answer to the game, prompts for and evaluates user guesses, and checks for four consecutive guesses.
-The module also includes another function but it is not called in this file and thus only one module is imported to increase code efficiency.
-"""
+The predefined gameplay module consists of the function start_game() which
+calls another predefined module to display the face values of the dice to the screen,
+work out the answer to the game, p[rompt for and evaluate user guesses, and
+check for four consecutive guesses.
 
+The module comprises two functions in total, but only one is imported as
+the other one is not called in this file and thus
+not imported to increase code efficiency.
+"""
 from gameplay import start_game
 
 

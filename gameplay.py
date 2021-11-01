@@ -13,10 +13,12 @@
 
 
 """
-The random module generates 'pseudo-random' numbers - face values on the dice.
+The random module allows for the generation of
+random numbers - face values on the dice.
+
 The predefined dice module displays the face value of dice to the screen.
 
-Generally, the random module gives the face of each die a value 
+In general, the random module gives the face of each die a value 
 which is displayed to the screen using the dice module.
 """
 import random
