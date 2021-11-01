@@ -20,6 +20,21 @@ import random
 import dice
 
 
+def guess_validation():
+    """
+    Function to validate the user guess. Creating this function allows the validation (using try/except/finally) to continuously repeats until a valid guess is made.
+    This function takes no parameters, as well as no global variables.
+    Returns: the finally valid guess is returned.
+    """
+    try:
+        GUESS = int(input('Please enter your guess for the roll: '))
+    except ValueError:
+        print('Invalid value! The face value of a die is an integer data type.\n')
+        GUESS = guess_validation()
+    finally:
+        return GUESS
+
+
 def start_game(ROUND, CONSECUTIVE_CORRECT, CONSECUTIVE_INCORRECT, FINAL_CORRECT, FINAL_INCORRECT, consecutive):
     """
     Function to act as the brain of the puzzle/game. It calls a predefined module called dice.py to display the face values of the dice to the screen, works out the answer to the game, prompts for and evaluates user guesses, checks for four consecutive guesses.
@@ -94,18 +109,3 @@ def start_game(ROUND, CONSECUTIVE_CORRECT, CONSECUTIVE_INCORRECT, FINAL_CORRECT,
 
     # A fruitful function.
     return ROUND, CONSECUTIVE_CORRECT, CONSECUTIVE_INCORRECT, FINAL_CORRECT, FINAL_INCORRECT, consecutive
-
-
-def guess_validation():
-    """
-    Function to validate the user guess. Creating this function allows the validation (using try/except/finally) to continuously repeats until a valid guess is made.
-    This function takes no parameters, as well as no global variables.
-    Returns: the finally valid guess is returned.
-    """
-    try:
-        GUESS = int(input('Please enter your guess for the roll: '))
-    except ValueError:
-        print('Invalid value! The face value of a die is an integer data type.\n')
-        GUESS = guess_validation()
-    finally:
-        return GUESS
