@@ -15,7 +15,7 @@
 """
 The predefined gameplay module consists of the function start_game() which
 calls another predefined module to display the face values of the dice to the screen,
-work out the answer to the game, p[rompt for and evaluate user guesses, and
+work out the answer to the game, prompt for and evaluate user guesses, and
 check for four consecutive guesses.
 
 The module comprises two functions in total, but only one is imported as
@@ -82,8 +82,7 @@ while start.lower() not in ['n', 'no']:
 # Game summary.
 if ROUND != 0:
     print(
-    f"""
-
+    f"""\n
 Game Summary
 ============
 
