@@ -15,10 +15,10 @@ The predefined game_body module consists of the GamePlay function which calls an
 The module also includes another function but it is not called in this file and thus only one module is imported to increase code efficiency.
 """
 
-from game_body import GamePlay
+from gameplay import GamePlay
 
 
-# Display the game introduction.
+# Display the game's introduction.
 print(
 """
 Petals Around the Rose
