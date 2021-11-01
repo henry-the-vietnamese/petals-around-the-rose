@@ -11,7 +11,7 @@
 #   from a third party and without using any aids other than those cited.
 
 """
-The predefined game_body module consists of the GamePlay function which calls another predefined module to display the face values of the dice to the screen, works out the answer to the game, prompts for and evaluates user guesses, and checks for four consecutive guesses.
+The predefined gameplay module consists of the GamePlay function which calls another predefined module to display the face values of the dice to the screen, works out the answer to the game, prompts for and evaluates user guesses, and checks for four consecutive guesses.
 The module also includes another function but it is not called in this file and thus only one module is imported to increase code efficiency.
 """
 
