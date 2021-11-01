@@ -5,7 +5,9 @@
 # Author:       Tan Duc Mai
 # Email:        tan.duc.work@gmail.com
 # Date:         6/10/2021
-# Description:  The CPU of the game, working out whether the user wins/loses and determining consecutive guesses.
+# Description:  The CPU of the game (imported into the main.py file)
+#               It works whether the user wins/loses and 
+#               determines consecutive guesses.
 #   I hereby declare that I completed this work without any improper help
 #   from a third party and without using any aids other than those cited.
 
@@ -14,7 +16,6 @@ The random module generates 'pseudo-random' numbers - face values on the dice.
 The predefined dice module displays the face value of dice to the screen.
 Generally, the random module gives the face of each die a value which is displayed to the screen using the dice module.
 """
-
 import random
 import dice
 
