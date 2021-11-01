@@ -41,7 +41,7 @@ CONSECUTIVE_INCORRECT = 0   # The number of consecutive incorrect guesses.
 FINAL_CORRECT = 0           # The number of correct guesses in total.
 FINAL_INCORRECT = 0         # The number of incorrect guesses in total.
 
-# Create an empty list to keep track of correct or incorrect guesses in a row.
+# Initialise an empty list to keep track of correct or incorrect guesses in a row.
 consecutive = []
 
 # Ask if the user wants to start the game.
