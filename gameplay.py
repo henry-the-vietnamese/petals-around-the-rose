@@ -20,43 +20,42 @@ import random
 import dice
 
 
-def GamePlay(ROUND, CONSECUTIVE_CORRECT, CONSECUTIVE_INCORRECT, FINAL_CORRECT, FINAL_INCORRECT, consecutive):
+def start_game(ROUND, CONSECUTIVE_CORRECT, CONSECUTIVE_INCORRECT, FINAL_CORRECT, FINAL_INCORRECT, consecutive):
     """
     Function to act as the brain of the puzzle/game. It calls a predefined module called dice.py to display the face values of the dice to the screen, works out the answer to the game, prompts for and evaluates user guesses, checks for four consecutive guesses.
     This function takes six parameters which are responsible for keeping track of the flow of the game.
     Parameters: ROUND, CONSECUTIVE_CORRECT, CONSECUTIVE_INCORRECT, FINAL_CORRECT, FINAL_INCORRECT, consecutive.
     Returns: All of the six mentioned parameters are returned from the function so that the function can be reused if the user opts to replay the game.
     """
-
     # Start the game.
     ROUND += 1
 
     # Create an empty list to store 5 randomly generated dice rolls.
-    dicelist = []
+    dice_list = []
     for _ in range(5):
-        dicelist.append(random.randint(1, 6))
+        dice_list.append(random.randint(1, 6))
 
     # Call the predefined function to display the randomly generated dice rolls to the screen.
     dice.display_dice(
-            dicelist[0],
-            dicelist[1],
-            dicelist[2],
-            dicelist[3],
-            dicelist[4],
+            dice_list[0],
+            dice_list[1],
+            dice_list[2],
+            dice_list[3],
+            dice_list[4],
     )
 
     # Work out the answer.
     SCORE = 0
-    for face_value in dicelist:
+    for face_value in dice_list:
         if face_value == 3:
             SCORE += 2
         elif face_value == 5:
             SCORE += 4
-        else:               # face_value = 2, 4, 6
+        else:               # face_value = 1, 2, 4, 6
             SCORE += 0
 
     # Prompt for and read the user guess.
-    GUESS = ValidGuess()
+    GUESS = guess_validation()
 
     if GUESS == SCORE:
         CONSECUTIVE_CORRECT += 1
@@ -97,17 +96,16 @@ def GamePlay(ROUND, CONSECUTIVE_CORRECT, CONSECUTIVE_INCORRECT, FINAL_CORRECT, F
     return ROUND, CONSECUTIVE_CORRECT, CONSECUTIVE_INCORRECT, FINAL_CORRECT, FINAL_INCORRECT, consecutive
 
 
-def ValidGuess():
+def guess_validation():
     """
     Function to validate the user guess. Creating this function allows the validation (using try/except/finally) to continuously repeats until a valid guess is made.
     This function takes no parameters, as well as no global variables.
     Returns: the finally valid guess is returned.
     """
-
     try:
         GUESS = int(input('Please enter your guess for the roll: '))
     except ValueError:
         print('Invalid value! The face value of a die is an integer data type.\n')
-        GUESS = ValidGuess()
+        GUESS = guess_validation()
     finally:
         return GUESS

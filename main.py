@@ -11,11 +11,11 @@
 #   from a third party and without using any aids other than those cited.
 
 """
-The predefined gameplay module consists of the GamePlay function which calls another predefined module to display the face values of the dice to the screen, works out the answer to the game, prompts for and evaluates user guesses, and checks for four consecutive guesses.
+The predefined gameplay module consists of the start_game function which calls another predefined module to display the face values of the dice to the screen, works out the answer to the game, prompts for and evaluates user guesses, and checks for four consecutive guesses.
 The module also includes another function but it is not called in this file and thus only one module is imported to increase code efficiency.
 """
 
-from gameplay import GamePlay
+from gameplay import start_game
 
 
 # Display the game's introduction.
@@ -51,7 +51,7 @@ while start.lower() not in ['y', 'yes', 'n', 'no']:
     start = input('\nWould you like to play Petals Around the Rose [y|n]? ')
 
 while start.lower() in ['y', 'yes']:
-    ROUND, CONSECUTIVE_CORRECT, CONSECUTIVE_INCORRECT, FINAL_CORRECT, FINAL_INCORRECT, consecutive = GamePlay(ROUND, CONSECUTIVE_CORRECT, CONSECUTIVE_INCORRECT, FINAL_CORRECT, FINAL_INCORRECT, consecutive)
+    ROUND, CONSECUTIVE_CORRECT, CONSECUTIVE_INCORRECT, FINAL_CORRECT, FINAL_INCORRECT, consecutive = start_game(ROUND, CONSECUTIVE_CORRECT, CONSECUTIVE_INCORRECT, FINAL_CORRECT, FINAL_INCORRECT, consecutive)
 
     # Repeat the game.
     start = input('\nRoll dice again [y|n]? ')
