@@ -15,13 +15,16 @@
 """
 The random module allows for the generation of
 random numbers - face values on the dice.
+Only one function - randint() - of this module is needed and
+therefore only it is imported to 
+increase code efficiency.
 
 The predefined dice module displays the face value of dice to the screen.
 
 In general, the random module gives the face of each die a value 
 which is displayed to the screen using the dice module.
 """
-import random
+from random import randint
 import dice
 
 
@@ -103,7 +106,7 @@ def start_game(
     # five randomly generated dice rolls.
     dice_list = []
     for _ in range(5):
-        dice_list.append(random.randint(1, 6))
+        dice_list.append(randint(1, 6))
 
     # Call the predefined function to display 
     # the randomly generated dice rolls to the screen.
