@@ -40,7 +40,10 @@ def guess_validation():
         return GUESS
 
 
-def start_game(ROUND, CONSECUTIVE_CORRECT, CONSECUTIVE_INCORRECT, FINAL_CORRECT, FINAL_INCORRECT, consecutive):
+def start_game(
+        ROUND, CONSECUTIVE_CORRECT, 
+        CONSECUTIVE_INCORRECT, FINAL_CORRECT, 
+        FINAL_INCORRECT, consecutive):
     """Docstring for the function start_game()
     
     The CPU of the game. 
