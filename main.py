@@ -51,33 +51,37 @@ FINAL_INCORRECT = 0         # The number of incorrect guesses in total.
 consecutive = []
 
 # Ask if the user wants to start the game.
-start = input('\nWould you like to play Petals Around the Rose [y|n]? ')
+start = None
 
-# Input validation, should be either 'yes' or 'no'.
-while start.lower() not in ['y', 'yes', 'n', 'no']:
-    print("Please enter either 'y' or 'n'.")
+# A 'no' response means the game will not be played.
+while start not in ['n', 'no']:
     start = input('\nWould you like to play Petals Around the Rose [y|n]? ')
 
-# Start the game if the user says 'yes'.
-while start.lower() not in ['n', 'no']:
-    # New values are assigned to the same variables
-    # so that the game can run again with numbers
-    # keep being counted.
-    (ROUND, CONSECUTIVE_CORRECT,
-     CONSECUTIVE_INCORRECT, FINAL_CORRECT,
-     FINAL_INCORRECT, consecutive) = start_game(
-                                        ROUND, CONSECUTIVE_CORRECT, 
-                                        CONSECUTIVE_INCORRECT, FINAL_CORRECT, 
-                                        FINAL_INCORRECT, consecutive,
-                                    )
-
-    # Ask if the user wants to repeat the game.
-    start = input('\nRoll dice again [y|n]? ')
-    
-    # Input validation, should be either yes or no.
+    # Input validation, must be either 'yes' or 'no'.
     while start.lower() not in ['y', 'yes', 'n', 'no']:
         print("Please enter either 'y' or 'n'.")
+        start = input('\nWould you like to play Petals Around the Rose [y|n]? ')
+
+    # Start the game if the user says 'yes'.
+    while start.lower() in ['y', 'yes']:
+        # New values are assigned to the same variables
+        # so that the game can run again with numbers
+        # keep being counted.
+        (ROUND, CONSECUTIVE_CORRECT,
+         CONSECUTIVE_INCORRECT, FINAL_CORRECT,
+         FINAL_INCORRECT, consecutive) = start_game(
+                                            ROUND, CONSECUTIVE_CORRECT, 
+                                            CONSECUTIVE_INCORRECT, FINAL_CORRECT, 
+                                            FINAL_INCORRECT, consecutive,
+                                        )
+
+        # Ask if the user wants to repeat the game.
         start = input('\nRoll dice again [y|n]? ')
+        
+        # Input validation, must be either yes or no.
+        while start.lower() not in ['y', 'yes', 'n', 'no']:
+            print("Please enter either 'y' or 'n'.")
+            start = input('\nRoll dice again [y|n]? ')
 
 # Game summary.
 if ROUND != 0:
