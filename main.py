@@ -31,22 +31,24 @@ print(
 Petals Around the Rose
 ----------------------
 The name of the game is 'Petals Around the Rose'. The name of the
-game is important. The computer will roll five dice and ask you to
-guess the score for the roll. The score will always be zero or an
-even number. Your mission, should you choose to accept it, is to
-work out how the computer calculates the score. If you succeed in
-working out the secret and guess correctly four times in a row, you
-become a Potentate of the Rose.
+game is important. The computer will roll dice and ask you to guess
+the score for the roll. The score will always be zero or an even
+number. Your mission, should you choose to accept it, is to work out
+how the computer calculates the score. If you succeed in working
+out the secret and guess correctly four times in a row, you become a
+Potentate of the Rose.
 """
 )
 
 # Variable initialisation.
-## Initialise five variables to keep track of the flow of the game.
+## Initialise six variables to keep track of the flow of the game.
 ROUND = 0                   # The number of games will be played.
 CONSECUTIVE_CORRECT = 0     # The number of consecutive correct guesses.
 CONSECUTIVE_INCORRECT = 0   # The number of consecutive incorrect guesses.
 FINAL_CORRECT = 0           # The number of correct guesses in total.
 FINAL_INCORRECT = 0         # The number of incorrect guesses in total.
+POTENTATE = False           # Become True when the user has guessed four
+                                # or more correctly in-a-row.
 
 ## Initialise an empty list to keep track of correct or incorrect 
 ## guesses in a row.
@@ -80,19 +82,19 @@ while start not in ['n'.lower(), 'no'.lower(),
         # the game can run again with numbers keep being counted.
         (ROUND, CONSECUTIVE_CORRECT,
          CONSECUTIVE_INCORRECT, FINAL_CORRECT,
-         FINAL_INCORRECT, consecutive) = start_game(
-                                            ROUND, CONSECUTIVE_CORRECT, 
-                                            CONSECUTIVE_INCORRECT, FINAL_CORRECT, 
-                                            FINAL_INCORRECT, consecutive,
-                                        )
-
+         FINAL_INCORRECT, POTENTATE, 
+         consecutive) = start_game(
+                            ROUND, CONSECUTIVE_CORRECT, 
+                            CONSECUTIVE_INCORRECT, FINAL_CORRECT, 
+                            FINAL_INCORRECT, POTENTATE,
+                            consecutive,) 
         # Ask if the user wants to repeat the game.
-        start = input('\nRoll dice again [y|n]? ')
+        start = input('\nDo you give up [y|n]? ')
         
         # Input validation, must be either yes or no.
         while start.lower() not in ['y', 'yes', 'n', 'no']:
             print("Please enter either 'y' or 'n'.")
-            start = input('\nRoll dice again [y|n]? ')
+            start = input('\nDo you give up [y|n]? ')
 
 # Game summary.
 if ROUND != 0:
@@ -102,11 +104,14 @@ Game Summary
 ============
 
 You played {ROUND} games:
-  |--> Number of correct guesses: {FINAL_CORRECT}
-  |--> Number of incorrect guesses: {FINAL_INCORRECT}
-
-Thanks for playing!
-    """
+ * Correct guesses:     {FINAL_CORRECT}
+ * Incorrect guesses:   {FINAL_INCORRECT}
+     """
     )
+    if POTENTATE:
+        print('Congratulations, you are now a Potentate of the Rose.')
+    else:
+        print('Maybe you will work it out next time.')
+    print('Thanks for playing!')
 else:
-    print('\nNo worries... another time perhaps... :)')
+    print('\nPlease play soon... :)')
