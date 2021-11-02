@@ -38,6 +38,8 @@ def guess_validation():
     int
         The valid user guess for the game.
     """
+    # try...except...finally method is used to prevent the program from crashing
+    # in case the user inputs a non-int value.
     try:
         GUESS = int(input('Please enter your guess for the roll: '))
     except ValueError:
