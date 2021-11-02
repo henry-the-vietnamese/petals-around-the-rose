@@ -13,14 +13,14 @@
 
 
 """
-The predefined gameplay module consists of the function start_game() which
-calls another predefined module to display the face values of the dice to the screen,
-work out the answer to the game, prompt for and evaluate user guesses, and
-check for four consecutive guesses.
+The predefined gameplay module consists of the function start_game() 
+which calls another predefined module to display the face values of 
+the dice to the screen, work out the answer to the game, prompt for 
+and evaluate user guesses, and check for four consecutive guesses.
 
-The module comprises two functions in total, but only one is imported as
-the other one is not called in this file and thus
-not imported to increase code efficiency.
+The module comprises two functions in total, but only one is imported 
+as the other one is not called in this file and thus not imported to
+increase code efficiency.
 """
 from gameplay import start_game
 
@@ -40,14 +40,16 @@ become a Potentate of the Rose.
 """
 )
 
-# Create five variables to keep track of the flow of the game.
+# Variable initialisation.
+## Initialise five variables to keep track of the flow of the game.
 ROUND = 0                   # The number of games will be played.
 CONSECUTIVE_CORRECT = 0     # The number of consecutive correct guesses.
 CONSECUTIVE_INCORRECT = 0   # The number of consecutive incorrect guesses.
 FINAL_CORRECT = 0           # The number of correct guesses in total.
 FINAL_INCORRECT = 0         # The number of incorrect guesses in total.
 
-# Initialise an empty list to keep track of correct or incorrect guesses in a row.
+## Initialise an empty list to keep track of correct or incorrect 
+## guesses in a row.
 consecutive = []
 
 # Ask if the user wants to start the game.
@@ -55,18 +57,23 @@ start = None
 
 # A 'no' response means the game will not be played.
 while start not in ['n', 'no']:
-    start = input('\nWould you like to play Petals Around the Rose [y|n]? ')
+    start = input(
+                '\nWould you like to play Petals Around the Rose'
+                ' [y|n]? '
+            )
 
     # Input validation, must be either 'yes' or 'no'.
     while start.lower() not in ['y', 'yes', 'n', 'no']:
         print("Please enter either 'y' or 'n'.")
-        start = input('\nWould you like to play Petals Around the Rose [y|n]? ')
+        start = input(
+                    '\nWould you like to play Petals Around the Rose'
+                    '[y|n]? '
+                )
 
     # Start the game if the user says 'yes'.
     while start.lower() in ['y', 'yes']:
-        # New values are assigned to the same variables
-        # so that the game can run again with numbers
-        # keep being counted.
+        # New values are assigned to the same variables so that 
+        # the game can run again with numbers keep being counted.
         (ROUND, CONSECUTIVE_CORRECT,
          CONSECUTIVE_INCORRECT, FINAL_CORRECT,
          FINAL_INCORRECT, consecutive) = start_game(
