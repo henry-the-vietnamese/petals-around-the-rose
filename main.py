@@ -56,7 +56,11 @@ consecutive = []
 start = None
 
 # A 'no' response means the game will not be played.
-while start not in ['n', 'no']:
+while start not in ['n'.lower(), 'no'.lower(),
+                    'n'.upper(), 'no'.upper()]:
+    # The s.lower() method is applied to the items instead of 
+    # the 'start' variable as it is a 'NoneType' object which
+    # has no attribute 'lower'.
     start = input(
                 '\nWould you like to play Petals Around the Rose'
                 ' [y|n]? '
