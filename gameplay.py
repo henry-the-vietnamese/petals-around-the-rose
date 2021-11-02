@@ -14,7 +14,7 @@
 
 """
 The random module allows for the generation of
-random numbers - face values on the dice.
+random numbers (face values on the dice).
 Only one function - randint() - of this module is needed and
 therefore only it is imported to 
 increase code efficiency.
