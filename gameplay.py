@@ -129,7 +129,7 @@ def start_game(
             SCORE += 0
 
     # Prompt for and read the user guess.
-    # The called function will validate the guess.
+    # A predefined function will be called to validate the guess.
     GUESS = guess_validation()
 
     if GUESS == SCORE:
