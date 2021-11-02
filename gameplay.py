@@ -92,7 +92,7 @@ def start_game(
     FINAL_INCORRECT : int
         The number of incorrect guesses in total.
     consecutive :list
-        The elements contained are either 'correct' or
+        The items contained are either 'correct' or
         'incorrect' which will then be used to 
         compare whether correct or incorrect 
         guesses are consecutive.
@@ -118,7 +118,7 @@ def start_game(
         diceList[4],
     )
 
-    # Work out the answer.
+    # Evaluate user's score. 
     SCORE = 0               # Score starts with 0.
     for face_value in diceList:
         if face_value == 3:
