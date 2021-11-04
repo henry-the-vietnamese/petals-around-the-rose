@@ -87,7 +87,8 @@ while start not in ['n'.lower(), 'no'.lower(),
                             ROUND, CONSECUTIVE_CORRECT, 
                             CONSECUTIVE_INCORRECT, FINAL_CORRECT, 
                             FINAL_INCORRECT, POTENTATE,
-                            consecutive,) 
+                            consecutive,
+                        ) 
         # Ask if the user wants to repeat the game.
         start = input('\nDo you give up [y|n]? ')
         
