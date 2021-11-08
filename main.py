@@ -41,72 +41,74 @@ Potentate of the Rose.
 )
 
 # Variable initialisation.
-## Initialise six variables to keep track of the flow of the game.
-ROUND = 0                   # The number of games will be played.
-CONSECUTIVE_CORRECT = 0     # The number of consecutive correct guesses.
-TOTAL_CORRECT = 0           # The number of correct guesses in total.
-incorrect_guess = False     # Become True if the user guesses incorrectly.
-potentate = False           # Become True when the user has guessed four
-                                # or more correctly in-a-row.
+## 1. The number of games will be played.
+ROUND = 0
+## 2. The number of consecutive correct guesses.
+CONSECUTIVE_CORRECT = 0
+## 3. The number of correct guesses in total.
+TOTAL_CORRECT = 0
+## 4. Become True if the user guesses incorrectly.
+incorrect_guess = False     
+## 5. Become True if the user guesses correctly four times in a row.
+potentate = False
+## 6. Become True if the user has at least four correct guesses in a row.
 more_than_4_correct_in_row = False
-
 
 # Ask if the user wants to start the game.
 play = None
 
-# A 'no' response means the game will not be played.
-while play not in ['n'.lower(), 'no'.lower(),
-                    'n'.upper(), 'no'.upper()]:
-    # The s.lower() method is applied to the items instead of 
-    # the 'start' variable as it is a 'NoneType' object which
-    # has no attribute 'lower'.
+## A response other than 'yes' means the game will not be played.
+while play not in ['n', 'no', 'n'.upper(), 'no'.upper()]:
+    """
+    The string.upper() method is applied to the items instead of the
+    'play' variable as it is a 'NoneType' object having no attribute 'lower'.
+    """
     play = input(
                 '\nWould you like to play Petals Around the Rose'
                 ' [y|n]? '
-            )
-
-    # 'play' input validation, must be either 'yes' or 'no'.
+           )
+    ## 'play' input validation, must be either 'yes' or 'no'.
     while play.lower() not in ['y', 'yes', 'n', 'no']:
         print("Please enter either 'y' or 'n'.")
         play = input(
                     '\nWould you like to play Petals Around the Rose'
                     '[y|n]? '
-                )
+               )
 
     # Start the game if the user says 'yes'.
     while play.lower() in ['y', 'yes']:
-        # New values are assigned to the same variables so that 
-        # the game can run again with numbers keep being counted.
+        """
+        New values are assigned to the same variables so that 
+        the game can run again with numbers keeping to be counted.
+        """
         (ROUND, CONSECUTIVE_CORRECT,
-         incorrect_guess, TOTAL_CORRECT,
-         potentate 
-        ) = start_game(
-                    ROUND, CONSECUTIVE_CORRECT, 
-                    incorrect_guess, TOTAL_CORRECT, 
-                    potentate,
-            ) 
-    
-        # Ask if the user wants to repeat the game.
+         TOTAL_CORRECT, incorrect_guess, 
+         potentate) = start_game(ROUND, CONSECUTIVE_CORRECT, 
+                                 incorrect_guess, TOTAL_CORRECT, 
+                                 potentate) 
+
+        # Ask if the user wants to play the game again.
         if potentate:
             more_than_4_correct_in_row = True
-        
-        if not incorrect_guess: 
+
+        # If the user didn't guess incorrectly.
+        if not incorrect_guess:
+            # If the user has four or more correct guesses in a row.
             if CONSECUTIVE_CORRECT == 4 or more_than_4_correct_in_row:
-                # Reset the variable.
+                # Reset the variable before playing again.
                 CONSECUTIVE_CORRECT = 0
-
+                # Prompt the user for a response to replaying the game.
                 play = input('\nDo you want to keep playing [y|n]? ')
-
-                # 'play' input validation, must be either 'yes' or 'no'.
+                ## 'play' input validation, must be either 'yes' or 'no'.
                 while play.lower() not in ['y', 'yes', 'n', 'no']:
                     print("Please enter either 'y' or 'n'.")
                     play = input('\nDo you want to keep playing [y|n]? ')
             
         else:
             if play in ['y', 'yes']:
+                # Prompt the user for a response to stopping the game.
                 abort = input('\nDo you give up [y|n]? ')
-
-                # 'abort' input validation, must be either yes or no.
+                ## 'abort' input validation, must be either yes or no.
                 while abort.lower() not in ['y', 'yes', 'n', 'no']:
                     print("Please enter either 'y' or 'n'.")
                     abort = input('\nDo you give up [y|n]? ')
@@ -117,7 +119,7 @@ while play not in ['n'.lower(), 'no'.lower(),
                     play = 'n'
                 elif abort.lower() in ['n', 'no']:
                     play = 'y'
-                    # Reset the variable.
+                    # Reset the variable before playing again.
                     incorrect_guess = False
 
 # Game summary.

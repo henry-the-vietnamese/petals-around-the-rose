@@ -54,9 +54,8 @@ def guess_validation():
 
 def start_game(
         ROUND, CONSECUTIVE_CORRECT, 
-        incorrect_guess, TOTAL_CORRECT, 
-        potentate,
-        ):
+        TOTAL_CORRECT, incorrect_guess, 
+        potentate):
     """Docstring for the function start_game()
     
     The CPU or the brain of the game. 
@@ -71,13 +70,12 @@ def start_game(
         The number of games will be played.
     CONSECUTIVE_CORRECT : int
         The number of consecutive correct guesses.
-    incorrect_guess : int
-        The number of consecutive incorrect guesses.
     TOTAL_CORRECT : int
         The number of correct guesses in total.
+    incorrect_guess : bool
+        Become True if the user guesses incorrectly.
     potentate : bool
-        Become true when the user has guessed four or more 
-        correctly in-a-row.
+        Become True if the user guesses correctly four times in a row.
 
     Returns
     -------
@@ -86,74 +84,72 @@ def start_game(
     CONSECUTIVE_CORRECT : int
         The number of consecutive correct guesses
         the user has received up to this point.
-    incorrect_guess : int
-        The number of consecutive incorrect guesses
-        the user has received up to this point.
     TOTAL_CORRECT : int
         The number of correct guesses in total.
+    incorrect_guess : bool
+        Mark whether the user has just enterred an incorrect guess.
     potentate : bool
-        Mark whether the user has guessed four or more correctly in-a-row.
+        Mark whether the user has guessed correctly four times in a row.
     """
     # Start the game.
     ROUND += 1
 
-    # Initialise an empty list to store five randomly generated dice rolls.
+    # Initialise an empty list to store five generated dice rolls.
     diceList = []
     for _ in range(6):
         diceList.append(randint(1, 6))
 
-    # Call the predefined function to display the randomly generated 
-    # dice rolls to the screen.
+    # Call the predefined function to display the generated dice rolls.
     dice.display_dice(diceList)
 
-    # Evaluate user's score. 
-    SCORE = 0                   # Score starts with 0.
+    # Calculate the result. 
+    RESULT = 0                   # Result starts with 0.
     for face_value in diceList:
         if face_value == 3:
-            SCORE += 2
+            RESULT += 2
         elif face_value == 5:
-            SCORE += 4
-        else:                   # face_value = 1, 2, 4, 6
-            SCORE += 0
+            RESULT += 4
+        else:                   # face_value = 1, 2, 4, 6.
+            RESULT += 0
 
-    # Prompt for and read the user guess.
-    # A predefined function will be called to validate the guess.
+    # Prompt for, read, and validate guess from the user.
     GUESS = guess_validation()
 
-    if GUESS == SCORE:
+    # Compare the user's guess with the result.
+    if GUESS == RESULT:
         CONSECUTIVE_CORRECT += 1
         TOTAL_CORRECT += 1
-        # If the guesses are 4 in a row.
+        # If the user has exactly four consecutive correct guesses.
         if CONSECUTIVE_CORRECT == 4:
-            # The user has exactly 4 consecutive correct guesses.
             print(
                 'Congratulations! You have worked out the secret!\n'
                 'Make sure you don\'t tell anyone!'
             )
 
+            # 'potentate' variable becomes True to mark this event.
             potentate = True
-        
+        # If the user simply has a correct guess, not four in a row.
         elif CONSECUTIVE_CORRECT > 0:
             print('Well done! You guessed it!')
 
     else:
+        # 'incorrect_guess' variable becomes True to mark this event.
         incorrect_guess = True
+        # Determine whether the incorrect guess is even or not.
+        # To output an appropriate message.
         if GUESS % 2 == 0:
-            print(f'No sorry, it\'s {SCORE} not {GUESS}.')
+            print(f'No sorry, it\'s {RESULT} not {GUESS}.')
         else:
             print(
-                f'No sorry, it\'s {SCORE} not {GUESS}. ' 
+                f'No sorry, it\'s {RESULT} not {GUESS}. ' 
                 f'The score is always even.'
             )
-        
         print(
             '\nHint: The name of the game is important... '
             'Petals Around the Rose.'
         )
 
-    # Returns. 
-    return (
-        ROUND, CONSECUTIVE_CORRECT, 
-        incorrect_guess, TOTAL_CORRECT, 
-        potentate,
-    )
+    # Return values for global usage. 
+    return (ROUND, CONSECUTIVE_CORRECT, 
+            TOTAL_CORRECT, incorrect_guess,
+            potentate)
