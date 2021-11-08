@@ -56,19 +56,14 @@ four_correct_in_row = False
 more_than_4_correct_in_row = False
 
 # Ask if the user wants to start the game.
-play = None
+play = False
 
-## A response other than 'yes' means the game will not be played.
-while play not in ['n', 'no', 'n'.upper(), 'no'.upper()]:
-    """
-    The s.upper() method is applied to the items instead of the 'play' 
-    variable as it is a 'NoneType' object having no attribute 'lower'.
-    """
+while not play:
     play = input(
                 '\nWould you like to play Petals Around the Rose'
                 ' [y|n]? '
            )
-    ## 'play' input validation, must be either 'yes' or 'no'.
+    # 'play' input validation, must be either 'yes' or 'no'.
     while play.lower() not in ['y', 'yes', 'n', 'no']:
         print("Please enter either 'y' or 'n'.")
         play = input(
@@ -77,7 +72,7 @@ while play not in ['n', 'no', 'n'.upper(), 'no'.upper()]:
                )
 
     # Start the game if the user says 'yes'.
-    while play.lower() in ['y', 'yes']:
+    while play.lower() not in ['n', 'no']:
         """
         New values are assigned to the same variables so that 
         the game can run again with numbers keeping to be counted.
@@ -113,23 +108,28 @@ while play not in ['n', 'no', 'n'.upper(), 'no'.upper()]:
             This else branch prevents the event that the user responds
             'no' to the prompting message from the previous if branch.
             """
-            if play in ['y', 'yes']:
+            if play not in ['n', 'no']:
                 # Prompt the user for a response to stopping the game.
-                abort = input('\nDo you give up [y|n]? ')
-                ## 'abort' input validation, must be either yes or no.
-                while abort.lower() not in ['y', 'yes', 'n', 'no']:
-                    print("Please enter either 'y' or 'n'.")
+                abort = False
+                
+                while not abort:
                     abort = input('\nDo you give up [y|n]? ')
-                """
-                Now, depending on whether the user wants to give up, 
-                change the start variable so that the loop can continue.
-                """
-                if abort.lower() in ['y', 'yes']:
-                    play = 'n'
-                elif abort.lower() in ['n', 'no']:
-                    play = 'y'
-                    # Reset the variable before playing again.
-                    incorrect_guess = False
+                
+                    # 'abort' input validation, must be either yes or no.
+                    while abort.lower() not in ['y', 'yes', 'n', 'no']:
+                        print("Please enter either 'y' or 'n'.")
+                        abort = input('\nDo you give up [y|n]? ')
+                    
+                    """
+                    Now, depending on whether the user wants to give up, 
+                    change the start variable so that the loop can continue.
+                    """
+                    if abort.lower() not in ['n', 'no']:
+                        play = 'n'
+                    else:
+                        play = 'y'
+                        # Reset the variable before playing again.
+                        incorrect_guess = False
 
 # Game summary.
 if ROUND != 0:
