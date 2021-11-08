@@ -112,18 +112,12 @@ def start_game(
 
     # Initialise an empty list to store five randomly generated dice rolls.
     diceList = []
-    for _ in range(5):
+    for _ in range(6):
         diceList.append(randint(1, 6))
 
     # Call the predefined function to display the randomly generated 
     # dice rolls to the screen.
-    dice.display_dice(
-        diceList[0],
-        diceList[1],
-        diceList[2],
-        diceList[3],
-        diceList[4],
-    )
+    dice.display_dice(diceList)
 
     # Evaluate user's score. 
     SCORE = 0                   # Score starts with 0.
