@@ -56,7 +56,7 @@ def start_game(
         ROUND, CONSECUTIVE_CORRECT, 
         incorrect_guess, TOTAL_CORRECT, 
         potentate,
-        consecutive):
+        ):
     """Docstring for the function start_game()
     
     The CPU or the brain of the game. 
@@ -78,9 +78,6 @@ def start_game(
     potentate : bool
         Become true when the user has guessed four or more 
         correctly in-a-row.
-    consecutive : list
-        The list storing either 'correct' and 'incorrect' to 
-        keep track of consecutive correct or incorrect guesses.
 
     Returns
     -------
@@ -96,12 +93,6 @@ def start_game(
         The number of correct guesses in total.
     potentate : bool
         Mark whether the user has guessed four or more correctly in-a-row.
-    consecutive : list
-        The items contained are either 'correct' or 'incorrect' 
-        which will then be used to compare whether correct 
-        or incorrect guesses are consecutive.
-        It might be empty if the correct or incorrect guesses 
-        are not consecutive.
     """
     # Start the game.
     ROUND += 1
@@ -165,5 +156,4 @@ def start_game(
         ROUND, CONSECUTIVE_CORRECT, 
         incorrect_guess, TOTAL_CORRECT, 
         potentate,
-        consecutive,
     )

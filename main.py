@@ -50,9 +50,6 @@ potentate = False           # Become True when the user has guessed four
                                 # or more correctly in-a-row.
 more_than_4_correct_in_row = False
 
-## Initialise an empty list to keep track of correct or incorrect 
-## guesses in a row.
-consecutive = []
 
 # Ask if the user wants to start the game.
 play = None
@@ -82,13 +79,11 @@ while play not in ['n'.lower(), 'no'.lower(),
         # the game can run again with numbers keep being counted.
         (ROUND, CONSECUTIVE_CORRECT,
          incorrect_guess, TOTAL_CORRECT,
-         potentate, 
-         consecutive
+         potentate 
         ) = start_game(
                     ROUND, CONSECUTIVE_CORRECT, 
                     incorrect_guess, TOTAL_CORRECT, 
                     potentate,
-                    consecutive,
             ) 
     
         # Ask if the user wants to repeat the game.
