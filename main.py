@@ -61,8 +61,8 @@ play = None
 ## A response other than 'yes' means the game will not be played.
 while play not in ['n', 'no', 'n'.upper(), 'no'.upper()]:
     """
-    The string.upper() method is applied to the items instead of the
-    'play' variable as it is a 'NoneType' object having no attribute 'lower'.
+    The s.upper() method is applied to the items instead of the 'play' 
+    variable as it is a 'NoneType' object having no attribute 'lower'.
     """
     play = input(
                 '\nWould you like to play Petals Around the Rose'
