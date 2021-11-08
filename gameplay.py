@@ -56,7 +56,7 @@ def start_game(
         ROUND, CONSECUTIVE_CORRECT, 
         TOTAL_CORRECT, incorrect_guess, 
         four_correct_in_row):
-    """Docstring for the function start_game()
+    """Docstring for the function start_game().
     
     The CPU or the brain of the game. 
     The function also calls the predefined called dice.py to 
