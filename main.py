@@ -14,9 +14,10 @@
 
 """
 The predefined gameplay module consists of the function start_game() 
-which calls another predefined module to display the face values of 
-the dice to the screen, work out the answer to the game, prompt for 
-and evaluate user guesses, and check for four consecutive guesses.
+which calls another predefined module dice.py to display the face
+values of the dice to the screen, work out the answer to the game,
+prompt for and evaluate the user's guess, and lastly determine if
+the user has four correct guesses in a row.
 
 The module comprises two functions in total, but only one is imported 
 as the other one is not called in this file and thus not imported to
@@ -58,7 +59,7 @@ more_than_4_correct_in_row = False
 play = None
 
 ## A response other than 'yes' means the game will not be played.
-while play not in ['n', 'no', 'n'.upper(), 'no'.upper()]:
+while not play in ['y', 'yes', 'y'.upper(), 'yes'.upper()]:
     """
     The string.upper() method is applied to the items instead of the
     'play' variable as it is a 'NoneType' object having no attribute 'lower'.
@@ -84,14 +85,19 @@ while play not in ['n', 'no', 'n'.upper(), 'no'.upper()]:
         (ROUND, CONSECUTIVE_CORRECT,
          TOTAL_CORRECT, incorrect_guess, 
          potentate) = start_game(ROUND, CONSECUTIVE_CORRECT, 
-                                 incorrect_guess, TOTAL_CORRECT, 
+                                 TOTAL_CORRECT, incorrect_guess,
                                  potentate) 
 
-        # Ask if the user wants to play the game again.
+        """
+        After guessing, if the user has guessed correctly four times
+        in a row, mark this event so that appropriate message can be
+        displayed later.
+        """
         if potentate:
             more_than_4_correct_in_row = True
 
-        # If the user didn't guess incorrectly.
+        """Evaluate the guesses to display appropriate message."""
+        # If the user didn't have incorrect guess.
         if not incorrect_guess:
             # If the user has four or more correct guesses in a row.
             if CONSECUTIVE_CORRECT == 4 or more_than_4_correct_in_row:
@@ -103,8 +109,12 @@ while play not in ['n', 'no', 'n'.upper(), 'no'.upper()]:
                 while play.lower() not in ['y', 'yes', 'n', 'no']:
                     print("Please enter either 'y' or 'n'.")
                     play = input('\nDo you want to keep playing [y|n]? ')
-            
+        # If the user guessed incorrectly.    
         else:
+            """
+            This else condition prevents the event that the user responds
+            'no' to the prompting messsage in the previous if condition.
+            """
             if play in ['y', 'yes']:
                 # Prompt the user for a response to stopping the game.
                 abort = input('\nDo you give up [y|n]? ')
@@ -112,9 +122,10 @@ while play not in ['n', 'no', 'n'.upper(), 'no'.upper()]:
                 while abort.lower() not in ['y', 'yes', 'n', 'no']:
                     print("Please enter either 'y' or 'n'.")
                     abort = input('\nDo you give up [y|n]? ')
-
-                # Depend on whether the user wants to give up, 
-                # change the start variable.
+                """
+                Now, depending on whether the user wants to give up, 
+                change the start variable so that the loop can continue.
+                """
                 if abort.lower() in ['y', 'yes']:
                     play = 'n'
                 elif abort.lower() in ['n', 'no']:
@@ -133,7 +144,7 @@ You played {ROUND} games:
  * Incorrect guesses:   {ROUND - TOTAL_CORRECT}
     """
     )
-    if not incorrect_guess and more_than_4_correct_in_row:
+    if more_than_4_correct_in_row:
         print('Congratulations, you are now a Potentate of the Rose.')
     else:
         print('Maybe you will work it out next time.')
