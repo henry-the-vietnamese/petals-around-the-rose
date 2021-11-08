@@ -87,7 +87,7 @@ def start_game(
     TOTAL_CORRECT : int
         The number of correct guesses in total.
     incorrect_guess : bool
-        Mark whether the user has just enterred an incorrect guess.
+        Mark whether the user has just entered an incorrect guess.
     potentate : bool
         Mark whether the user has guessed correctly four times in a row.
     """
@@ -135,8 +135,10 @@ def start_game(
     else:
         # 'incorrect_guess' variable becomes True to mark this event.
         incorrect_guess = True
-        # Determine whether the incorrect guess is even or not.
-        # To output an appropriate message.
+        """
+        Determine whether the incorrect guess is even or not to
+        display an appropriate message.
+        """
         if GUESS % 2 == 0:
             print(f'No sorry, it\'s {RESULT} not {GUESS}.')
         else:
