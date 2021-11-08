@@ -54,8 +54,8 @@ def guess_validation():
 
 def start_game(
         ROUND, CONSECUTIVE_CORRECT, 
-        CONSECUTIVE_INCORRECT, FINAL_CORRECT, 
-        FINAL_INCORRECT, POTENTATE,
+        incorrect_guess, TOTAL_CORRECT, 
+        POTENTATE,
         more_4_in_row, consecutive):
     """Docstring for the function start_game()
     
@@ -71,12 +71,10 @@ def start_game(
         The number of games will be played.
     CONSECUTIVE_CORRECT : int
         The number of consecutive correct guesses.
-    CONSECUTIVE_INCORRECT : int
+    incorrect_guess : int
         The number of consecutive incorrect guesses.
-    FINAL_CORRECT : int
+    TOTAL_CORRECT : int
         The number of correct guesses in total.
-    FINAL_INCORRECT : int
-        The number of incorrect guesses in total.
     POTENTATE : bool
         Become true when the user has guessed four or more 
         correctly in-a-row.
@@ -91,13 +89,11 @@ def start_game(
     CONSECUTIVE_CORRECT : int
         The number of consecutive correct guesses
         the user has received up to this point.
-    CONSECUTIVE_INCORRECT : int
+    incorrect_guess : int
         The number of consecutive incorrect guesses
         the user has received up to this point.
-    FINAL_CORRECT : int
+    TOTAL_CORRECT : int
         The number of correct guesses in total.
-    FINAL_INCORRECT : int
-        The number of incorrect guesses in total.
     POTENTATE : bool
         Mark whether the user has guessed four or more correctly in-a-row.
     consecutive : list
@@ -135,13 +131,25 @@ def start_game(
 
     if GUESS == SCORE:
         CONSECUTIVE_CORRECT += 1
-        FINAL_CORRECT += 1
-        consecutive.append('correct')
-        print('Well done! You guessed it!')
+        TOTAL_CORRECT += 1
+        # If the guesses are 4 in a row.
+        if CONSECUTIVE_CORRECT == 4:
+            # The user has exactly 4 consecutive correct guesses.
+            print(
+                'Congratulations! You have worked out the secret!\n'
+                'Make sure you don\'t tell anyone!'
+            )
+
+            if POTENTATE:
+                more_4_in_row = True
+
+            POTENTATE = True
+        
+        elif CONSECUTIVE_CORRECT > 0:
+            print('Well done! You guessed it!')
+
     else:
-        CONSECUTIVE_INCORRECT += 1
-        FINAL_INCORRECT += 1
-        consecutive.append('incorrect')
+        incorrect_guess = True
         if GUESS % 2 == 0:
             print(f'No sorry, it\'s {SCORE} not {GUESS}.')
         else:
@@ -155,38 +163,10 @@ def start_game(
             'Petals Around the Rose.'
         )
 
-    # Check for four consecutive guesses.
-    if ('correct' in consecutive 
-            and 'incorrect' in consecutive):
-        # Reset variables to 0 and empty the list when correct or incorrect 
-        # guesses are not consecutive.
-        CONSECUTIVE_CORRECT = 0
-        CONSECUTIVE_INCORRECT = 0
-        consecutive.clear()
-
-    # Now the guesses are consecutive.
-    if len(consecutive) == 4:
-        if 'correct' in consecutive and 'incorrect' not in consecutive:
-            # The user has exactly 4 consecutive correct guesses.
-            print(
-                '\nCongratulations! You have worked out the secret!\n'
-                'Make sure you don\'t tell anyone!'
-            )
-
-            if POTENTATE:
-                more_4_in_row = True
-
-            POTENTATE = True
-        # Reset variables to 0 and empty the list after displaying messages 
-        # about consecutive guesses.
-        CONSECUTIVE_CORRECT = 0
-        CONSECUTIVE_INCORRECT = 0
-        consecutive.clear()
-
     # Returns. 
     return (
         ROUND, CONSECUTIVE_CORRECT, 
-        CONSECUTIVE_INCORRECT, FINAL_CORRECT, 
-        FINAL_INCORRECT, POTENTATE,
+        incorrect_guess, TOTAL_CORRECT, 
+        POTENTATE,
         more_4_in_row, consecutive,
     )

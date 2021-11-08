@@ -44,9 +44,8 @@ Potentate of the Rose.
 ## Initialise six variables to keep track of the flow of the game.
 ROUND = 0                   # The number of games will be played.
 CONSECUTIVE_CORRECT = 0     # The number of consecutive correct guesses.
-CONSECUTIVE_INCORRECT = 0   # The number of consecutive incorrect guesses.
-FINAL_CORRECT = 0           # The number of correct guesses in total.
-FINAL_INCORRECT = 0         # The number of incorrect guesses in total.
+incorrect_guess = 0   # The number of consecutive incorrect guesses.
+TOTAL_CORRECT = 0           # The number of correct guesses in total.
 POTENTATE = False           # Become True when the user has guessed four
                                 # or more correctly in-a-row.
 more_4_in_row = False
@@ -82,29 +81,45 @@ while play not in ['n'.lower(), 'no'.lower(),
         # New values are assigned to the same variables so that 
         # the game can run again with numbers keep being counted.
         (ROUND, CONSECUTIVE_CORRECT,
-         CONSECUTIVE_INCORRECT, FINAL_CORRECT,
-         FINAL_INCORRECT, POTENTATE, 
+         incorrect_guess, TOTAL_CORRECT,
+         POTENTATE, 
          more_4_in_row, consecutive
         ) = start_game(
                     ROUND, CONSECUTIVE_CORRECT, 
-                    CONSECUTIVE_INCORRECT, FINAL_CORRECT, 
-                    FINAL_INCORRECT, POTENTATE,
+                    incorrect_guess, TOTAL_CORRECT, 
+                    POTENTATE,
                     more_4_in_row, consecutive,
             ) 
+    
         # Ask if the user wants to repeat the game.
-        abort = input('\nDo you give up [y|n]? ')
+        if CONSECUTIVE_CORRECT == 4:
+            play = input('\nDo you want to keep playing [y|n]? ')
 
-        # 'abort' input validation, must be either yes or no.
-        while abort.lower() not in ['y', 'yes', 'n', 'no']:
-            print("Please enter either 'y' or 'n'.")
+            # 'play' input validation, must be either 'yes' or 'no'.
+            while play.lower() not in ['y', 'yes', 'n', 'no']:
+                print("Please enter either 'y' or 'n'.")
+                play = input('\nDo you want to keep playing [y|n]? ')
+
+            # Reset the variable.
+            CONSECUTIVE_CORRECT = 0
+        
+        if incorrect_guess:
             abort = input('\nDo you give up [y|n]? ')
 
-        # Depends on whether the user wants to give up, 
-        # change the start variable.
-        if abort.lower() in ['y', 'yes']:
-            play = 'n'
-        elif abort.lower() in ['n', 'no']:
-            play = 'y'
+            # 'abort' input validation, must be either yes or no.
+            while abort.lower() not in ['y', 'yes', 'n', 'no']:
+                print("Please enter either 'y' or 'n'.")
+                abort = input('\nDo you give up [y|n]? ')
+
+            # Depend on whether the user wants to give up, 
+            # change the start variable.
+            if abort.lower() in ['y', 'yes']:
+                play = 'n'
+            elif abort.lower() in ['n', 'no']:
+                play = 'y'
+
+            # Reset the variable.
+            incorrect_guess = False
 
 # Game summary.
 if ROUND != 0:
@@ -113,8 +128,8 @@ if ROUND != 0:
 Game Summary
 ------------
 You played {ROUND} games:
- * Correct guesses:         {FINAL_CORRECT}
- * Incorrect guesses:       {FINAL_INCORRECT}
+ * Correct guesses:     {TOTAL_CORRECT}
+ * Incorrect guesses:   {ROUND - TOTAL_CORRECT}
     """
     )
     if more_4_in_row:
