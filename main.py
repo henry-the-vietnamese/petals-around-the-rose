@@ -51,7 +51,7 @@ TOTAL_CORRECT = 0
 ## 4. Become True if the user guesses incorrectly.
 incorrect_guess = False     
 ## 5. Become True if the user guesses correctly four times in a row.
-potentate = False
+four_correct_in_row = False
 ## 6. Become True if the user has at least four correct guesses in a row.
 more_than_4_correct_in_row = False
 
@@ -84,21 +84,20 @@ while play not in ['n', 'no', 'n'.upper(), 'no'.upper()]:
         """
         (ROUND, CONSECUTIVE_CORRECT,
          TOTAL_CORRECT, incorrect_guess, 
-         potentate) = start_game(ROUND, CONSECUTIVE_CORRECT, 
-                                 TOTAL_CORRECT, incorrect_guess,
-                                 potentate) 
+         four_correct_in_row) = start_game(ROUND, CONSECUTIVE_CORRECT, 
+                                           TOTAL_CORRECT, incorrect_guess,
+                                           four_correct_in_row) 
 
-        """
-        After guessing, if the user has guessed correctly four times
-        in a row, mark this event so that appropriate message can be
-        displayed later.
-        """
-        if potentate:
-            more_than_4_correct_in_row = True
-
-        """Evaluate the guesses to display appropriate message."""
-        # If the user didn't have incorrect guess.
-        if not incorrect_guess:
+        # Evaluate the guesses to display appropriate message.
+        if not incorrect_guess: # If the user didn't guess incorrectly.
+            if four_correct_in_row:
+                """
+                After guessing correctly again, if the user has already
+                guessed correctly four times in a row, mark this event
+                so that appropriate message can be displayed later.
+                """
+                more_than_4_correct_in_row = True
+            
             # If the user has four or more correct guesses in a row.
             if CONSECUTIVE_CORRECT == 4 or more_than_4_correct_in_row:
                 # Reset the variable before playing again.
@@ -109,8 +108,7 @@ while play not in ['n', 'no', 'n'.upper(), 'no'.upper()]:
                 while play.lower() not in ['y', 'yes', 'n', 'no']:
                     print("Please enter either 'y' or 'n'.")
                     play = input('\nDo you want to keep playing [y|n]? ')
-        # If the user guessed incorrectly.    
-        else:
+        else:                   # If the user guessed incorrectly.    
             """
             This else condition prevents the event that the user responds
             'no' to the prompting message in the previous if condition.
