@@ -110,8 +110,8 @@ while play not in ['n', 'no', 'n'.upper(), 'no'.upper()]:
                     play = input('\nDo you want to keep playing [y|n]? ')
         else:                   # If the user guessed incorrectly.    
             """
-            This else condition prevents the event that the user responds
-            'no' to the prompting message from the previous if condition.
+            This else branch prevents the event that the user responds
+            'no' to the prompting message from the previous if branch.
             """
             if play in ['y', 'yes']:
                 # Prompt the user for a response to stopping the game.
