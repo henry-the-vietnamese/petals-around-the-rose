@@ -92,9 +92,9 @@ while play not in ['n', 'no', 'n'.upper(), 'no'.upper()]:
         if not incorrect_guess: # If the user didn't guess incorrectly.
             if four_correct_in_row:
                 """
-                After guessing correctly again, if the user has already
-                guessed correctly four times in a row, mark this event
-                so that appropriate message can be displayed later.
+                If the user has already guessed correctly four times in
+                a row, and now another correct guess is made, mark this 
+                event so that appropriate message can be displayed later.
                 """
                 more_than_4_correct_in_row = True
             
@@ -111,7 +111,7 @@ while play not in ['n', 'no', 'n'.upper(), 'no'.upper()]:
         else:                   # If the user guessed incorrectly.    
             """
             This else condition prevents the event that the user responds
-            'no' to the prompting message in the previous if condition.
+            'no' to the prompting message from the previous if condition.
             """
             if play in ['y', 'yes']:
                 # Prompt the user for a response to stopping the game.
