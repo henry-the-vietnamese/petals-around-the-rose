@@ -59,7 +59,7 @@ more_than_4_correct_in_row = False
 play = None
 
 ## A response other than 'yes' means the game will not be played.
-while not play in ['y', 'yes', 'y'.upper(), 'yes'.upper()]:
+while play not in ['n', 'no', 'n'.upper(), 'no'.upper()]:
     """
     The string.upper() method is applied to the items instead of the
     'play' variable as it is a 'NoneType' object having no attribute 'lower'.
@@ -113,7 +113,7 @@ while not play in ['y', 'yes', 'y'.upper(), 'yes'.upper()]:
         else:
             """
             This else condition prevents the event that the user responds
-            'no' to the prompting messsage in the previous if condition.
+            'no' to the prompting message in the previous if condition.
             """
             if play in ['y', 'yes']:
                 # Prompt the user for a response to stopping the game.

@@ -96,6 +96,7 @@ def start_game(
 
     # Initialise an empty list to store five generated dice rolls.
     diceList = []
+    ## Start randomly rolling dice and store in the list.
     for _ in range(6):
         diceList.append(randint(1, 6))
 
@@ -103,7 +104,7 @@ def start_game(
     dice.display_dice(diceList)
 
     # Calculate the result. 
-    RESULT = 0                   # Result starts with 0.
+    RESULT = 0                   # Result starts at 0.
     for face_value in diceList:
         if face_value == 3:
             RESULT += 2
