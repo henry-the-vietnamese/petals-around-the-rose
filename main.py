@@ -44,11 +44,11 @@ Potentate of the Rose.
 ## Initialise six variables to keep track of the flow of the game.
 ROUND = 0                   # The number of games will be played.
 CONSECUTIVE_CORRECT = 0     # The number of consecutive correct guesses.
-incorrect_guess = 0   # The number of consecutive incorrect guesses.
 TOTAL_CORRECT = 0           # The number of correct guesses in total.
-POTENTATE = False           # Become True when the user has guessed four
+incorrect_guess = False     # Become True if the user guesses incorrectly.
+potentate = False           # Become True when the user has guessed four
                                 # or more correctly in-a-row.
-more_4_in_row = False
+more_than_4_correct_in_row = False
 
 ## Initialise an empty list to keep track of correct or incorrect 
 ## guesses in a row.
@@ -82,44 +82,48 @@ while play not in ['n'.lower(), 'no'.lower(),
         # the game can run again with numbers keep being counted.
         (ROUND, CONSECUTIVE_CORRECT,
          incorrect_guess, TOTAL_CORRECT,
-         POTENTATE, 
-         more_4_in_row, consecutive
+         potentate, 
+         consecutive
         ) = start_game(
                     ROUND, CONSECUTIVE_CORRECT, 
                     incorrect_guess, TOTAL_CORRECT, 
-                    POTENTATE,
-                    more_4_in_row, consecutive,
+                    potentate,
+                    consecutive,
             ) 
     
         # Ask if the user wants to repeat the game.
-        if CONSECUTIVE_CORRECT == 4:
-            play = input('\nDo you want to keep playing [y|n]? ')
+        if potentate:
+            more_than_4_correct_in_row = True
+        
+        if not incorrect_guess: 
+            if CONSECUTIVE_CORRECT == 4 or more_than_4_correct_in_row:
+                # Reset the variable.
+                CONSECUTIVE_CORRECT = 0
 
-            # 'play' input validation, must be either 'yes' or 'no'.
-            while play.lower() not in ['y', 'yes', 'n', 'no']:
-                print("Please enter either 'y' or 'n'.")
                 play = input('\nDo you want to keep playing [y|n]? ')
 
-            # Reset the variable.
-            CONSECUTIVE_CORRECT = 0
-        
-        if incorrect_guess:
-            abort = input('\nDo you give up [y|n]? ')
-
-            # 'abort' input validation, must be either yes or no.
-            while abort.lower() not in ['y', 'yes', 'n', 'no']:
-                print("Please enter either 'y' or 'n'.")
+                # 'play' input validation, must be either 'yes' or 'no'.
+                while play.lower() not in ['y', 'yes', 'n', 'no']:
+                    print("Please enter either 'y' or 'n'.")
+                    play = input('\nDo you want to keep playing [y|n]? ')
+            
+        else:
+            if play in ['y', 'yes']:
                 abort = input('\nDo you give up [y|n]? ')
 
-            # Depend on whether the user wants to give up, 
-            # change the start variable.
-            if abort.lower() in ['y', 'yes']:
-                play = 'n'
-            elif abort.lower() in ['n', 'no']:
-                play = 'y'
+                # 'abort' input validation, must be either yes or no.
+                while abort.lower() not in ['y', 'yes', 'n', 'no']:
+                    print("Please enter either 'y' or 'n'.")
+                    abort = input('\nDo you give up [y|n]? ')
 
-            # Reset the variable.
-            incorrect_guess = False
+                # Depend on whether the user wants to give up, 
+                # change the start variable.
+                if abort.lower() in ['y', 'yes']:
+                    play = 'n'
+                elif abort.lower() in ['n', 'no']:
+                    play = 'y'
+                    # Reset the variable.
+                    incorrect_guess = False
 
 # Game summary.
 if ROUND != 0:
@@ -132,7 +136,7 @@ You played {ROUND} games:
  * Incorrect guesses:   {ROUND - TOTAL_CORRECT}
     """
     )
-    if more_4_in_row:
+    if not incorrect_guess and more_than_4_correct_in_row:
         print('Congratulations, you are now a Potentate of the Rose.')
     else:
         print('Maybe you will work it out next time.')

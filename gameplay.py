@@ -55,8 +55,8 @@ def guess_validation():
 def start_game(
         ROUND, CONSECUTIVE_CORRECT, 
         incorrect_guess, TOTAL_CORRECT, 
-        POTENTATE,
-        more_4_in_row, consecutive):
+        potentate,
+        consecutive):
     """Docstring for the function start_game()
     
     The CPU or the brain of the game. 
@@ -75,7 +75,7 @@ def start_game(
         The number of consecutive incorrect guesses.
     TOTAL_CORRECT : int
         The number of correct guesses in total.
-    POTENTATE : bool
+    potentate : bool
         Become true when the user has guessed four or more 
         correctly in-a-row.
     consecutive : list
@@ -94,7 +94,7 @@ def start_game(
         the user has received up to this point.
     TOTAL_CORRECT : int
         The number of correct guesses in total.
-    POTENTATE : bool
+    potentate : bool
         Mark whether the user has guessed four or more correctly in-a-row.
     consecutive : list
         The items contained are either 'correct' or 'incorrect' 
@@ -140,10 +140,7 @@ def start_game(
                 'Make sure you don\'t tell anyone!'
             )
 
-            if POTENTATE:
-                more_4_in_row = True
-
-            POTENTATE = True
+            potentate = True
         
         elif CONSECUTIVE_CORRECT > 0:
             print('Well done! You guessed it!')
@@ -167,6 +164,6 @@ def start_game(
     return (
         ROUND, CONSECUTIVE_CORRECT, 
         incorrect_guess, TOTAL_CORRECT, 
-        POTENTATE,
-        more_4_in_row, consecutive,
+        potentate,
+        consecutive,
     )
