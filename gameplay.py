@@ -56,7 +56,7 @@ def start_game(
         ROUND, CONSECUTIVE_CORRECT, 
         CONSECUTIVE_INCORRECT, FINAL_CORRECT, 
         FINAL_INCORRECT, POTENTATE,
-        consecutive):
+        more_4_in_row, consecutive):
     """Docstring for the function start_game()
     
     The CPU or the brain of the game. 
@@ -149,6 +149,11 @@ def start_game(
                 f'No sorry, it\'s {SCORE} not {GUESS}. ' 
                 f'The score is always even.'
             )
+        
+        print(
+            'Hint: The name of the game is important... '
+            'Petals Around the Rose.'
+        )
 
     # Check for four consecutive guesses.
     if ('correct' in consecutive 
@@ -167,13 +172,11 @@ def start_game(
                 '\nCongratulations! You have worked out the secret!\n'
                 'Make sure you don\'t tell anyone!'
             )
+
+            if POTENTATE:
+                more_4_in_row = True
+
             POTENTATE = True
-        elif ('incorrect' in consecutive 
-                and 'correct' not in consecutive):
-            print(
-                'Hint: The name of the game is important... '
-                'Petals Around the Rose.'
-            )
         # Reset variables to 0 and empty the list after displaying messages 
         # about consecutive guesses.
         CONSECUTIVE_CORRECT = 0
@@ -185,5 +188,5 @@ def start_game(
         ROUND, CONSECUTIVE_CORRECT, 
         CONSECUTIVE_INCORRECT, FINAL_CORRECT, 
         FINAL_INCORRECT, POTENTATE,
-        consecutive,
+        more_4_in_row, consecutive,
     )
