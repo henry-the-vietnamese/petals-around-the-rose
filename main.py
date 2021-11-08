@@ -62,14 +62,14 @@ while not play:
     play = input(
                 '\nWould you like to play Petals Around the Rose'
                 ' [y|n]? '
-           )
+    )
     # 'play' input validation, must be either 'yes' or 'no'.
     while play.lower() not in ['y', 'yes', 'n', 'no']:
         print("Please enter either 'y' or 'n'.")
         play = input(
                     '\nWould you like to play Petals Around the Rose'
                     '[y|n]? '
-               )
+        )
 
     # Start the game if the user says 'yes'.
     while play.lower() not in ['n', 'no']:
