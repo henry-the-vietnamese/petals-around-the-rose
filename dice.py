@@ -20,7 +20,7 @@ def display_dice(dice):
     # Display face value of die to the screen.
     print(format("", '<6s'), end='')
     for i in range(len(dice)):
-          print(format("[" + str(dice[i]) + "]", '<10s'), end='')
+        print(format("[" + str(dice[i]) + "]", '<10s'), end='')
     print("\n")
 
     # Display the top row of face value to the screen.
@@ -38,11 +38,11 @@ def display_dice(dice):
     print(format("", '<6s'), end='')
     for i in range(len(dice)):       
         if dice[i] == 1 or dice[i] == 3 or dice[i] == 5:
-           print(format(" *", '<10s'), end='')
+            print(format(" *", '<10s'), end='')
         elif dice[i] == 6:
-           print(format("* *", '<10s'), end='')
+            print(format("* *", '<10s'), end='')
         else:
-           print(format(" ", '<10s'), end='')
+            print(format(" ", '<10s'), end='')
     print()
 
     # Display the bottom row of face value to the screen.
@@ -55,5 +55,3 @@ def display_dice(dice):
         elif dice[i] == 4 or dice[i] == 5 or dice[i] == 6:
             print(format("* *", '<10s'), end='')
     print("\n\n")
-
-    
