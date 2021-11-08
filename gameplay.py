@@ -151,7 +151,7 @@ def start_game(
             )
         
         print(
-            'Hint: The name of the game is important... '
+            '\nHint: The name of the game is important... '
             'Petals Around the Rose.'
         )
 

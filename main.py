@@ -112,7 +112,6 @@ if ROUND != 0:
     f"""\n
 Game Summary
 ------------
-
 You played {ROUND} games:
  * Correct guesses:         {FINAL_CORRECT}
  * Incorrect guesses:       {FINAL_INCORRECT}
