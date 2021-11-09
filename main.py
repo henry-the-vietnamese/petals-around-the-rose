@@ -132,7 +132,7 @@ while not play:
                         incorrect_guess = False
 
 # Game summary.
-if ROUND != 0:
+if ROUND:
     print(
     f"""\n
 Game Summary
