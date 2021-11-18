@@ -38,8 +38,6 @@ def validateGuess():
     int
         The valid guess taken by the user.
     """
-    # try...except...finally statement is used to prevent the program 
-    # from crashing in case the user inputs a non-int value.
     guess = None
     
     while guess == None or guess < 0:
@@ -60,10 +58,10 @@ def gamePlay(
     """Docstring for the function gamePlay().
     
     The CPU or the brain of the game. 
-    The function also calls the predefined called dice.py to 
+    The function also calls the predefined module called dice.py to 
     display the face values of the dice to the screen, 
     work out the answer to the game, prompt the user for guesses 
-    and evaluate them, check for four consecutive guesses.
+    and evaluate them, check for four consecutive correct guesses.
     
     Parameters
     ----------
@@ -97,28 +95,28 @@ def gamePlay(
 
     # Initialise an empty list to store five generated dice rolls.
     diceList = []
-    ## Start randomly rolling dice and store in the list.
+    ## Start rolling dice randomly and append to the list.
     for _ in range(6):
         diceList.append(randint(1, 6))
 
     # Call the predefined function to display the generated dice rolls.
     dice.display_dice(diceList)
 
-    # Calculate the result. 
-    result = 0                   # Result starts at 0.
+    # Petals calculation. 
+    petals = 0 
     for face_value in diceList:
         if face_value == 3:
-            result += 2
+            petals += 2
         elif face_value == 5:
-            result += 4
+            petals += 4
         else:                   # face_value = 1, 2, 4, 6.
-            result += 0
+            petals += 0
 
     # Prompt for, read, and validate guess from the user.
     guess = validateGuess()
 
-    # Compare the user's guess with the result.
-    if guess == result:
+    # Compare the user's guess with the total petals calculated.
+    if guess == petals:
         consecutive_correct += 1
         total_correct += 1
         # If the user has exactly four consecutive correct guesses.
@@ -138,16 +136,17 @@ def gamePlay(
         # 'incorrect_guess' variable becomes True to mark this event.
         incorrect_guess = True
         """
-        Determine whether the incorrect guess is even or not to
+        Determine whether the incorrect guess is even or not so as to
         display an appropriate message.
         """
         if guess % 2 == 0:
-            print(f'No sorry, it\'s {result} not {guess}.')
+            print(f'No sorry, it\'s {petals} not {guess}.')
         else:
             print(
-                f'No sorry, it\'s {result} not {guess}. ' 
+                f'No sorry, it\'s {petals} not {guess}. ' 
                 f'The score is always even.'
             )
+        
         print(
             '\nHint: The name of the game is important... '
             'Petals Around the Rose.'
