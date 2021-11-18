@@ -28,8 +28,8 @@ from random import randint
 import dice
 
 
-def guess_validation():
-    """Docstring for the function guess_validation().
+def validateGuess():
+    """Docstring for the function validateGuess().
     
     Validate guess from the user which should be an integer.
 
@@ -47,14 +47,14 @@ def guess_validation():
             'Invalid value! '
             'The face value of a die is an integer data type.\n'
         )
-        GUESS = guess_validation()
+        GUESS = validateGuess()
     finally:
         return GUESS
 
 
 def start_game(
-        ROUND, CONSECUTIVE_CORRECT, 
-        TOTAL_CORRECT, incorrect_guess, 
+        round, consecutive_correct, 
+        total_correct, incorrect_guess, 
         four_correct_in_row):
     """Docstring for the function start_game().
     
@@ -66,11 +66,11 @@ def start_game(
     
     Parameters
     ----------
-    ROUND : int
+    round : int
         The number of games will be played.
-    CONSECUTIVE_CORRECT : int
+    consecutive_correct : int
         The number of consecutive correct guesses.
-    TOTAL_CORRECT : int
+    total_correct : int
         The number of correct guesses in total.
     incorrect_guess : bool
         Become True if the user guesses incorrectly.
@@ -79,12 +79,12 @@ def start_game(
 
     Returns
     -------
-    ROUND : int
+    round : int
         The number of games the user has played up to this point.
-    CONSECUTIVE_CORRECT : int
+    consecutive_correct : int
         The number of consecutive correct guesses
         the user has received up to this point.
-    TOTAL_CORRECT : int
+    total_correct : int
         The number of correct guesses in total.
     incorrect_guess : bool
         Mark whether the user has just entered an incorrect guess.
@@ -92,7 +92,7 @@ def start_game(
         Mark whether the user has guessed correctly four times in a row.
     """
     # Start the game.
-    ROUND += 1
+    round += 1
 
     # Initialise an empty list to store five generated dice rolls.
     diceList = []
@@ -104,24 +104,24 @@ def start_game(
     dice.display_dice(diceList)
 
     # Calculate the result. 
-    RESULT = 0                   # Result starts at 0.
+    result = 0                   # Result starts at 0.
     for face_value in diceList:
         if face_value == 3:
-            RESULT += 2
+            result += 2
         elif face_value == 5:
-            RESULT += 4
+            result += 4
         else:                   # face_value = 1, 2, 4, 6.
-            RESULT += 0
+            result += 0
 
     # Prompt for, read, and validate guess from the user.
-    GUESS = guess_validation()
+    guess = validateGuess()
 
     # Compare the user's guess with the result.
-    if GUESS == RESULT:
-        CONSECUTIVE_CORRECT += 1
-        TOTAL_CORRECT += 1
+    if guess == result:
+        consecutive_correct += 1
+        total_correct += 1
         # If the user has exactly four consecutive correct guesses.
-        if CONSECUTIVE_CORRECT == 4:
+        if consecutive_correct == 4:
             print(
                 'Congratulations! You have worked out the secret!\n'
                 'Make sure you don\'t tell anyone!'
@@ -130,7 +130,7 @@ def start_game(
             # 'four_correct_in_row' variable becomes True to mark this event.
             four_correct_in_row = True
         # If the user simply has a correct guess, not four in a row.
-        elif CONSECUTIVE_CORRECT > 0:
+        elif consecutive_correct > 0:
             print('Well done! You guessed it!')
 
     else:
@@ -140,11 +140,11 @@ def start_game(
         Determine whether the incorrect guess is even or not to
         display an appropriate message.
         """
-        if GUESS % 2 == 0:
-            print(f'No sorry, it\'s {RESULT} not {GUESS}.')
+        if guess % 2 == 0:
+            print(f'No sorry, it\'s {result} not {guess}.')
         else:
             print(
-                f'No sorry, it\'s {RESULT} not {GUESS}. ' 
+                f'No sorry, it\'s {result} not {guess}. ' 
                 f'The score is always even.'
             )
         print(
@@ -153,6 +153,6 @@ def start_game(
         )
 
     # Return values for global usage. 
-    return (ROUND, CONSECUTIVE_CORRECT, 
-            TOTAL_CORRECT, incorrect_guess,
+    return (round, consecutive_correct, 
+            total_correct, incorrect_guess,
             four_correct_in_row)

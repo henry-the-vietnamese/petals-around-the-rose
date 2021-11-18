@@ -13,7 +13,7 @@
 
 
 """
-The predefined gameplay module consists of the function start_game() 
+The predefined gameplay.py module consists of the function start_game() 
 which calls another predefined module dice.py to display the face
 values of the dice to the screen, work out the answer to the game,
 prompt for and evaluate the user's guess, and lastly determine if
@@ -42,12 +42,12 @@ Potentate of the Rose.
 )
 
 # Variable initialisation.
-## 1. The number of games will be played.
-ROUND = 0
+## 1. The number of games that will be played.
+round = 0
 ## 2. The number of consecutive correct guesses.
-CONSECUTIVE_CORRECT = 0
+consecutive_correct = 0
 ## 3. The number of correct guesses in total.
-TOTAL_CORRECT = 0
+total_correct = 0
 ## 4. Become True if the user guesses incorrectly.
 incorrect_guess = False     
 ## 5. Become True if the user guesses correctly four times in a row.
@@ -77,10 +77,10 @@ while not play:
         New values are assigned to the same variables so that 
         the game can run again with numbers keeping to be counted.
         """
-        (ROUND, CONSECUTIVE_CORRECT,
-         TOTAL_CORRECT, incorrect_guess, 
-         four_correct_in_row) = start_game(ROUND, CONSECUTIVE_CORRECT, 
-                                           TOTAL_CORRECT, incorrect_guess,
+        (round, consecutive_correct,
+         total_correct, incorrect_guess, 
+         four_correct_in_row) = start_game(round, consecutive_correct, 
+                                           total_correct, incorrect_guess,
                                            four_correct_in_row) 
 
         # Evaluate the guesses to display appropriate message.
@@ -94,9 +94,9 @@ while not play:
                 more_than_4_correct_in_row = True
             
             # If the user has four or more correct guesses in a row.
-            if CONSECUTIVE_CORRECT == 4 or more_than_4_correct_in_row:
+            if consecutive_correct == 4 or more_than_4_correct_in_row:
                 # Reset the variable before playing again.
-                CONSECUTIVE_CORRECT = 0
+                consecutive_correct = 0
                 # Prompt the user for a response to replaying the game.
                 play = input('\nDo you want to keep playing [y|n]? ')
                 ## 'play' input validation, must be either 'yes' or 'no'.
@@ -132,14 +132,14 @@ while not play:
                         incorrect_guess = False
 
 # Game summary.
-if ROUND:
+if round:
     print(
     f"""\n
 Game Summary
 ------------
-You played {ROUND} games:
- * Correct guesses:     {TOTAL_CORRECT}
- * Incorrect guesses:   {ROUND - TOTAL_CORRECT}
+You played {round} games:
+ * Correct guesses:     {total_correct}
+ * Incorrect guesses:   {round - total_correct}
     """
     )
     if more_than_4_correct_in_row:
