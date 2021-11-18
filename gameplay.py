@@ -53,7 +53,7 @@ def validateGuess():
 
 
 def start_game(
-        round, consecutive_correct, 
+        rounds, consecutive_correct, 
         total_correct, incorrect_guess, 
         four_correct_in_row):
     """Docstring for the function start_game().
@@ -66,7 +66,7 @@ def start_game(
     
     Parameters
     ----------
-    round : int
+    rounds : int
         The number of games will be played.
     consecutive_correct : int
         The number of consecutive correct guesses.
@@ -79,7 +79,7 @@ def start_game(
 
     Returns
     -------
-    round : int
+    rounds : int
         The number of games the user has played up to this point.
     consecutive_correct : int
         The number of consecutive correct guesses
@@ -92,7 +92,7 @@ def start_game(
         Mark whether the user has guessed correctly four times in a row.
     """
     # Start the game.
-    round += 1
+    rounds += 1
 
     # Initialise an empty list to store five generated dice rolls.
     diceList = []
@@ -153,6 +153,6 @@ def start_game(
         )
 
     # Return values for global usage. 
-    return (round, consecutive_correct, 
+    return (rounds, consecutive_correct, 
             total_correct, incorrect_guess,
             four_correct_in_row)

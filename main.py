@@ -43,7 +43,7 @@ Potentate of the Rose.
 
 # Variable initialisation.
 ## 1. The number of games that will be played.
-round = 0
+rounds = 0
 ## 2. The number of consecutive correct guesses.
 consecutive_correct = 0
 ## 3. The number of correct guesses in total.
@@ -77,9 +77,9 @@ while not play:
         New values are assigned to the same variables so that 
         the game can run again with numbers keeping to be counted.
         """
-        (round, consecutive_correct,
+        (rounds, consecutive_correct,
          total_correct, incorrect_guess, 
-         four_correct_in_row) = start_game(round, consecutive_correct, 
+         four_correct_in_row) = start_game(rounds, consecutive_correct, 
                                            total_correct, incorrect_guess,
                                            four_correct_in_row) 
 
@@ -132,14 +132,14 @@ while not play:
                         incorrect_guess = False
 
 # Game summary.
-if round:
+if rounds:
     print(
     f"""\n
 Game Summary
 ------------
-You played {round} games:
+You played {rounds} games:
  * Correct guesses:     {total_correct}
- * Incorrect guesses:   {round - total_correct}
+ * Incorrect guesses:   {rounds - total_correct}
     """
     )
     if more_than_4_correct_in_row:
