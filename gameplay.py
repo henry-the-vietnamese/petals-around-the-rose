@@ -41,22 +41,22 @@ def validateGuess():
     # try...except...finally statement is used to prevent the program 
     # from crashing in case the user inputs a non-int value.
     try:
-        GUESS = int(input('Please enter your guess for the roll: '))
+        guess = int(input('Please enter your guess for the roll: '))
     except ValueError:
         print(
             'Invalid value! '
             'The face value of a die is an integer data type.\n'
         )
-        GUESS = validateGuess()
+        guess = validateGuess()
     finally:
-        return GUESS
+        return guess
 
 
-def start_game(
+def gamePlay(
         rounds, consecutive_correct, 
         total_correct, incorrect_guess, 
         four_correct_in_row):
-    """Docstring for the function start_game().
+    """Docstring for the function gamePlay().
     
     The CPU or the brain of the game. 
     The function also calls the predefined called dice.py to 

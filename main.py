@@ -13,7 +13,7 @@
 
 
 """
-The predefined gameplay.py module consists of the function start_game() 
+The predefined gameplay.py module consists of the function gamePlay() 
 which calls another predefined module dice.py to display the face
 values of the dice to the screen, work out the answer to the game,
 prompt for and evaluate the user's guess, and lastly determine if
@@ -23,7 +23,7 @@ The module comprises two functions in total, but only one is imported
 as the other one is not called in this file and thus not imported to
 increase code efficiency.
 """
-from gameplay import start_game
+from gameplay import gamePlay
 
 
 # Display the game's introduction.
@@ -79,7 +79,7 @@ while not play:
         """
         (rounds, consecutive_correct,
          total_correct, incorrect_guess, 
-         four_correct_in_row) = start_game(rounds, consecutive_correct, 
+         four_correct_in_row) = gamePlay(rounds, consecutive_correct, 
                                            total_correct, incorrect_guess,
                                            four_correct_in_row) 
 
