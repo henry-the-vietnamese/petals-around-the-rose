@@ -36,20 +36,21 @@ def validateGuess():
     Returns
     -------
     int
-        The valid user guess for the game.
+        The valid guess taken by the user.
     """
     # try...except...finally statement is used to prevent the program 
     # from crashing in case the user inputs a non-int value.
-    try:
-        guess = int(input('Please enter your guess for the roll: '))
-    except ValueError:
-        print(
-            'Invalid value! '
-            'The face value of a die is an integer data type.\n'
-        )
-        guess = validateGuess()
-    finally:
-        return guess
+    guess = None
+    
+    while guess == None or guess < 0:
+        try:
+            guess = float(input('Please enter your guess for the roll: '))
+            if guess < 0:
+                print('Error: negative number', end='\n\n')
+        except ValueError as e:
+            print('Error:', e, end='\n\n')
+    
+    return int(guess)
 
 
 def gamePlay(
