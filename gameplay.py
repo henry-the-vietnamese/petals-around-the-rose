@@ -93,21 +93,29 @@ def gamePlay(
     # Start the game.
     rounds += 1
 
-    # Roll six dice and store in a list.
+    # Initialise an empty list to store five generated dice rolls.
     diceList = []
+    ## Start rolling dice randomly and append to the list.
     for _ in range(6):
         diceList.append(randint(1, 6))
 
-    # Display the face values of the dice to the screen.
+    # Call the predefined function to display the generated dice rolls.
     dice.display_dice(diceList)
 
-    # Calculate the petals. 
-    petals = 2 * diceList.count(3) + 4 * diceList.count(5) 
-    
-    # Prompt for and validate guess from the user.
+    # Petals calculation. 
+    petals = 0 
+    for face_value in diceList:
+        if face_value == 3:
+            petals += 2
+        elif face_value == 5:
+            petals += 4
+        else:                   # face_value = 1, 2, 4, 6.
+            petals += 0
+
+    # Prompt for, read, and validate guess from the user.
     guess = validateGuess()
 
-    # Compare user's guess with the total petals.
+    # Compare the user's guess with the total petals calculated.
     if guess == petals:
         consecutive_correct += 1
         total_correct += 1
