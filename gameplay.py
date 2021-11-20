@@ -44,11 +44,38 @@ def validateGuess():
         try:
             guess = float(input('Please enter your guess for the roll: '))
             if guess < 0:
-                print('Error: negative number', end='\n\n')
+                print('Error: negative number')
         except ValueError as e:
-            print('Error:', e, end='\n\n')
+            print('Error:', e)
+        print()
     
     return int(guess)
+
+
+def calculatePetals(diceList):
+    """Docstring for the function calculatePetals().
+
+    Calculate the number of petals around the rose.
+
+    Parameters
+    ----------
+    diceList : list
+        The list whose items are the values of the dice.
+
+    Returns
+    -------
+    int
+        The number of petals around the rose.
+    """
+    petals = 0 
+    for face_value in diceList:
+        if face_value == 3:
+            petals += 2
+        elif face_value == 5:
+            petals += 4
+        else:                   # face_value = 1, 2, 4, 6.
+            petals += 0
+    return petals
 
 
 def gamePlay(
@@ -103,14 +130,7 @@ def gamePlay(
     dice.display_dice(diceList)
 
     # Petals calculation. 
-    petals = 0 
-    for face_value in diceList:
-        if face_value == 3:
-            petals += 2
-        elif face_value == 5:
-            petals += 4
-        else:                   # face_value = 1, 2, 4, 6.
-            petals += 0
+    petals = calculatePetals(diceList)
 
     # Prompt for, read, and validate guess from the user.
     guess = validateGuess()
