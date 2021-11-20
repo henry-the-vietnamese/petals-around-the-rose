@@ -13,17 +13,67 @@
 
 
 """
-The predefined gameplay.py module consists of the function gamePlay() 
-which calls another predefined module dice.py to display the face
-values of the dice to the screen, work out the answer to the game,
-prompt for and evaluate the user's guess, and lastly determine if
-the user has four correct guesses in a row.
+The random module allows for the generation of random numbers 
+(face values of the dice).
 
-The module comprises two functions in total, but only one is imported 
-as the other one is not called in this file and thus not imported to
-increase code efficiency.
+The predefined dice module displays the face value of dice 
+to the screen.
+
+In general, the random module gives the face of each die 
+a value which is displayed to the screen using the dice module.
 """
-from gameplay import gamePlay
+import random
+import dice
+
+
+def validateGuess():
+    """Docstring for the function validateGuess().
+    
+    Validate guess from the user which should be an integer.
+
+    Returns
+    -------
+    int
+        The valid guess taken by the user.
+    """
+    guess = None
+    
+    while guess == None or guess < 0:
+        try:
+            guess = float(input('Please enter your guess for the roll: '))
+            if guess < 0:
+                print('Error: negative number')
+        except ValueError as e:
+            print('Error:', e)
+        print()
+    
+    return int(guess)
+
+
+def calculatePetals(diceList):
+    """Docstring for the function calculatePetals().
+
+    Calculate the number of petals around the rose.
+
+    Parameters
+    ----------
+    diceList : list
+        The list whose items are the values of the dice.
+
+    Returns
+    -------
+    int
+        The number of petals around the rose.
+    """
+    petals = 0 
+    for face_value in diceList:
+        if face_value == 3:
+            petals += 2
+        elif face_value == 5:
+            petals += 4
+        else:                   # face_value = 1, 2, 4, 6.
+            petals += 0
+    return petals
 
 
 # Display the game's introduction.
@@ -77,12 +127,61 @@ while not play:
         New values are assigned to the same variables so that 
         the game can run again with numbers keeping to be counted.
         """
-        (rounds, consecutive_correct,
-         total_correct, incorrect_guess, 
-         four_correct_in_row) = gamePlay(rounds, consecutive_correct, 
-                                         total_correct, incorrect_guess,
-                                         four_correct_in_row) 
+        # Start the game.
+        rounds += 1
 
+        # Initialise an empty list to store five generated dice rolls.
+        diceList = []
+        ## Start rolling dice randomly and append to the list.
+        for _ in range(6):
+            diceList.append(random.randint(1, 6))
+
+        # Call the predefined function to display the generated dice rolls.
+        dice.display_dice(diceList)
+
+        # Petals calculation. 
+        petals = calculatePetals(diceList)
+
+        # Prompt for, read, and validate guess from the user.
+        guess = validateGuess()
+
+        # Compare the user's guess with the total petals calculated.
+        if guess == petals:
+            consecutive_correct += 1
+            total_correct += 1
+            # If the user has exactly four consecutive correct guesses.
+            if consecutive_correct == 4:
+                print(
+                    'Congratulations! You have worked out the secret!\n'
+                    'Make sure you don\'t tell anyone!'
+                )
+
+                # 'four_correct_in_row' variable becomes True to mark this event.
+                four_correct_in_row = True
+            # If the user simply has a correct guess, not four in a row.
+            elif consecutive_correct > 0:
+                print('Well done! You guessed it!')
+
+        else:
+            # 'incorrect_guess' variable becomes True to mark this event.
+            incorrect_guess = True
+            """
+            Determine whether the incorrect guess is even or not so as to
+            display an appropriate message.
+            """
+            if guess % 2 == 0:
+                print(f'No sorry, it\'s {petals} not {guess}.')
+            else:
+                print(
+                    f'No sorry, it\'s {petals} not {guess}. ' 
+                    f'The score is always even.'
+                )
+            
+            print(
+                '\nHint: The name of the game is important... '
+                'Petals Around the Rose.'
+        )
+            
         # Evaluate the guesses to display appropriate message.
         if not incorrect_guess: # If the user didn't guess incorrectly.
             if four_correct_in_row:
