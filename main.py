@@ -25,6 +25,38 @@ import random
 import dice
 
 
+def displayDetails():
+    """Docstring for the function displayDetails().
+
+    Returns
+    -------
+    None
+    """
+    pass
+
+
+def instructions():
+    """Docstring for the function instructions().
+
+    Returns
+    -------
+    None
+    """
+    print(
+    """
+Petals Around the Rose
+----------------------
+The name of the game is 'Petals Around the Rose'. The name of the
+game is important. The computer will roll dice and ask you to guess
+the score for the roll. The score will always be zero or an even
+number. Your mission, should you choose to accept it, is to work out
+how the computer calculates the score. If you succeed in working
+out the secret and guess correctly four times in a row, you become a
+Potentate of the Rose.
+    """
+    )
+
+    
 def validateGuess():
     """Docstring for the function validateGuess().
     
@@ -75,34 +107,21 @@ def calculatePetals(diceList):
     return petals
 
 
-# Display the game's introduction.
-print(
-"""
-Petals Around the Rose
-----------------------
-The name of the game is 'Petals Around the Rose'. The name of the
-game is important. The computer will roll dice and ask you to guess
-the score for the roll. The score will always be zero or an even
-number. Your mission, should you choose to accept it, is to work out
-how the computer calculates the score. If you succeed in working
-out the secret and guess correctly four times in a row, you become a
-Potentate of the Rose.
-"""
-)
+# Display my details.
+displayDetails()
+
+# Display the game's instructions.
+instructions()
 
 # Variable initialisation.
-## 1. The number of games that will be played.
-rounds = 0
-## 2. The number of consecutive correct guesses.
-consecutive_correct = 0
-## 3. The number of correct guesses in total.
-total_correct = 0
-## 4. Become True if the user guesses incorrectly.
-incorrect_guess = False     
-## 5. Become True if the user guesses correctly four times in a row.
-four_correct_in_row = False
-## 6. Become True if the user has at least four correct guesses in a row.
-more_than_4_correct_in_row = False
+rounds = 0                  # The number of games that will be played.
+consecutive_correct = 0     # The number of consecutive correct guesses.
+total_correct = 0           # The number of correct guesses in total.
+incorrect_guess = False             # Become True if the user guesses incorrectly.
+four_correct_in_row = False         # Become True if the user guesses correctly
+                                        # four times in a row.
+more_than_4_correct_in_row = False  # Become True if the user has at least
+                                        # four correct guesses in a row.
 
 # Ask if the user wants to start the game.
 play = False
