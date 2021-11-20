@@ -80,8 +80,8 @@ while not play:
         (rounds, consecutive_correct,
          total_correct, incorrect_guess, 
          four_correct_in_row) = gamePlay(rounds, consecutive_correct, 
-                                           total_correct, incorrect_guess,
-                                           four_correct_in_row) 
+                                         total_correct, incorrect_guess,
+                                         four_correct_in_row) 
 
         # Evaluate the guesses to display appropriate message.
         if not incorrect_guess: # If the user didn't guess incorrectly.
