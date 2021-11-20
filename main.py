@@ -7,7 +7,6 @@
 # Date:         6/10/2021
 # Description:  Build a mathematical challenging puzzle/game -
 #               Petals Around The Rose.
-#               This is the main interface of the game.
 #   I hereby declare that I completed this work without any improper help
 #   from a third party and without using any aids other than those cited.
 
@@ -29,7 +28,7 @@ import dice
 def validateGuess():
     """Docstring for the function validateGuess().
     
-    Validate guess from the user which should be an integer.
+    Validate guess from the user which should be a positive integer.
 
     Returns
     -------
@@ -109,30 +108,18 @@ more_than_4_correct_in_row = False
 play = False
 
 while not play:
-    play = input(
-                '\nWould you like to play Petals Around the Rose'
-                ' [y|n]? '
-    )
-    # 'play' input validation, must be either 'yes' or 'no'.
+    play = input('\nWould you like to play Petals Around the Rose [y|n]? ')
     while play.lower() not in ['y', 'yes', 'n', 'no']:
         print("Please enter either 'y' or 'n'.")
-        play = input(
-                    '\nWould you like to play Petals Around the Rose'
-                    '[y|n]? '
-        )
+        play = input('\nWould you like to play Petals Around the Rose [y|n]? ')
 
     # Start the game if the user says 'yes'.
     while play.lower() not in ['n', 'no']:
-        """
-        New values are assigned to the same variables so that 
-        the game can run again with numbers keeping to be counted.
-        """
         # Start the game.
         rounds += 1
 
-        # Initialise an empty list to store five generated dice rolls.
+        # Randomly roll six dice and store them in a list.
         diceList = []
-        ## Start rolling dice randomly and append to the list.
         for _ in range(6):
             diceList.append(random.randint(1, 6))
 
@@ -149,26 +136,16 @@ while not play:
         if guess == petals:
             consecutive_correct += 1
             total_correct += 1
-            # If the user has exactly four consecutive correct guesses.
             if consecutive_correct == 4:
                 print(
                     'Congratulations! You have worked out the secret!\n'
                     'Make sure you don\'t tell anyone!'
                 )
-
-                # 'four_correct_in_row' variable becomes True to mark this event.
                 four_correct_in_row = True
-            # If the user simply has a correct guess, not four in a row.
             elif consecutive_correct > 0:
                 print('Well done! You guessed it!')
-
         else:
-            # 'incorrect_guess' variable becomes True to mark this event.
             incorrect_guess = True
-            """
-            Determine whether the incorrect guess is even or not so as to
-            display an appropriate message.
-            """
             if guess % 2 == 0:
                 print(f'No sorry, it\'s {petals} not {guess}.')
             else:
@@ -180,10 +157,10 @@ while not play:
             print(
                 '\nHint: The name of the game is important... '
                 'Petals Around the Rose.'
-        )
+            )
             
-        # Evaluate the guesses to display appropriate message.
-        if not incorrect_guess: # If the user didn't guess incorrectly.
+        # Evaluate the guesses to display an appropriate message.
+        if not incorrect_guess:
             if four_correct_in_row:
                 """
                 If the user has already guessed correctly four times in
@@ -194,34 +171,30 @@ while not play:
             
             # If the user has four or more correct guesses in a row.
             if consecutive_correct == 4 or more_than_4_correct_in_row:
-                # Reset the variable before playing again.
-                consecutive_correct = 0
-                # Prompt the user for a response to replaying the game.
+                # Ask them if they want to replay the game.
                 play = input('\nDo you want to keep playing [y|n]? ')
-                ## 'play' input validation, must be either 'yes' or 'no'.
                 while play.lower() not in ['y', 'yes', 'n', 'no']:
                     print("Please enter either 'y' or 'n'.")
                     play = input('\nDo you want to keep playing [y|n]? ')
+                # Reset the variable before playing again.
+                consecutive_correct = 0
         else:                   # If the user guessed incorrectly.    
             """
             This else branch prevents the event that the user responds
             'no' to the prompting message from the previous if branch.
             """
             if play not in ['n', 'no']:
-                # Prompt the user for a response to stopping the game.
+                # Ask them if they want to stop playing.
                 abort = False
                 
                 while not abort:
                     abort = input('\nDo you give up [y|n]? ')
-                
-                    # 'abort' input validation, must be either yes or no.
                     while abort.lower() not in ['y', 'yes', 'n', 'no']:
                         print("Please enter either 'y' or 'n'.")
                         abort = input('\nDo you give up [y|n]? ')
-                    
                     """
-                    Now, depending on whether the user wants to give up, 
-                    change the start variable so that the loop can continue.
+                    Depending on the user choice, change the play variable 
+                    so that the outer while loop can be iterated again.
                     """
                     if abort.lower() not in ['n', 'no']:
                         play = 'n'
