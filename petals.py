@@ -14,10 +14,8 @@
 """
 The random module allows for the generation of random numbers 
 (face values of the dice).
-
 The predefined dice module displays the face value of dice 
 to the screen.
-
 In general, the random module gives the face of each die 
 a value which is displayed to the screen using the dice module.
 """
@@ -25,6 +23,7 @@ import random
 import dice
 
 
+# Function Definitions #
 def displayDetails():
     """Docstring for the function displayDetails().
 
@@ -89,7 +88,7 @@ def calculatePetals(diceList):
     Parameters
     ----------
     diceList : list
-        The list whose items are the values of the dice.
+        The list whose items are the face values of the dice.
 
     Returns
     -------
@@ -107,10 +106,9 @@ def calculatePetals(diceList):
     return petals
 
 
-# Display my details.
+# Program #
+# Output my details and the game's instructions to the screen.
 displayDetails()
-
-# Display the game's instructions.
 instructions()
 
 # Variable initialisation.
