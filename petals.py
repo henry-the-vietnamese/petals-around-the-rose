@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 
 #
-# File:         main.py
+# File:         petals.py
 # Author:       Tan Duc Mai
 # Email:        tan.duc.work@gmail.com
 # Date:         6/10/2021
 # Description:  Build a mathematical challenging puzzle/game -
-#               Petals Around The Rose.
+#               Petals Around the Rose.
 #   I hereby declare that I completed this work without any improper help
 #   from a third party and without using any aids other than those cited.
 
