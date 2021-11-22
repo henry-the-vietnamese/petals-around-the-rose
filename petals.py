@@ -106,7 +106,7 @@ def calculatePetals(diceList):
             result += 2
         elif face_value == 5:
             result += 4
-        else:                   # face_value = 1, 2, 4, 6.
+        else:                   # face_value = 1, 2, 4, 6
             result += 0
     return result
 
@@ -129,41 +129,42 @@ def askToPlay(rounds, guess_correctly):
     str
         The user's response if they want to play again. 
     """
-    play = False
-    abort = False
+    EXPECTED_INPUT = ['y', 'yes', 'n', 'no']
+    valid = False
 
     if rounds == 0:
         # Ask if they want to start the game.
-        while not play:
+        while not valid:
             play = input('\nWould you like to play Petals Around the Rose [y|n]? ')
-            while play.lower() not in ['y', 'yes', 'n', 'no']:
+            if play.lower() not in EXPECTED_INPUT:
                 print("Please enter either 'y' or 'n'.")
-                play = input('\nWould you like to play Petals Around the Rose [y|n]? ')
+            else:
+                valid = True
     
     else:
         if guess_correctly > 0:
-            # Ask if they want to replay the game.
-            while not play:
+            # Just guessed correctly, ask if they want to replay the game.
+            while not valid:
                 play = input('\nDo you want to keep playing [y|n]? ')
-                while play.lower() not in ['y', 'yes', 'n', 'no']:
+                if play.lower() not in EXPECTED_INPUT:
                     print("Please enter either 'y' or 'n'.")
-                    play = input('\nDo you want to keep playing [y|n]? ')
+                else:
+                    valid = True
 
         else:
-            #Ask if they want to stop the game.
-            while not abort:
-                abort = input('\nDo you give up [y|n]? ')
-                while abort.lower() not in ['y', 'yes', 'n', 'no']:
+            # Just guessed incorrectly, ask if they want to stop the game.
+            while not valid:
+                stop = input('\nDo you give up [y|n]? ')
+                if stop.lower() not in EXPECTED_INPUT:
                     print("Please enter either 'y' or 'n'.")
-                    abort = input('\nDo you give up [y|n]? ')
-                """
-                Depending on the user's choice, change the play variable 
-                so that the outer while loop can be iterated again.
-                """
-                if abort.lower() not in ['n', 'no']:
-                    play = 'n'
                 else:
-                    play = 'y'
+                    valid = True
+
+            if stop.lower() not in EXPECTED_INPUT[2:4]:
+                play = 'n'
+            else:
+                play = 'y'
+
     return play
 
 
@@ -216,10 +217,7 @@ while play.lower() not in ['n', 'no']:
             print('Well done! You guessed it!')
         # If the user has more than four correct guesses in a row.
         if consecutive_correct > 4:
-            """
-            Confirm that they have more than four correct guesses
-            in a low.
-            """
+            # Confirm four consecutive guesses.
             potentate = True
             # Ask if the user wants to play again.
             play = askToPlay(rounds, consecutive_correct)
@@ -240,7 +238,7 @@ while play.lower() not in ['n', 'no']:
 
 
 # ------------------------------ Summary ------------------------------ #
-if rounds:
+if rounds > 0:
     print(
     f"""\n
 Game Summary
