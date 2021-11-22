@@ -120,9 +120,10 @@ def askToPlay(rounds, guess_correctly):
     ----------
     rounds : int
         The number of rounds the user has played.
+        The value 0 (False) for not having played any game.
     guess_correctly : int
-        The number of correct guesses in a row. If the user just guessed
-        incorrectly, the variable equates to 0.
+        The number of correct guesses in a row. 
+        The value 0 (Flase) means an incorrect guess is just made.
 
     Returns
     -------
@@ -132,7 +133,7 @@ def askToPlay(rounds, guess_correctly):
     EXPECTED_INPUT = ['y', 'yes', 'n', 'no']
     valid = False
 
-    if rounds == 0:
+    if not rounds:
         # Ask if they want to start the game.
         while not valid:
             play = input('\nWould you like to play Petals Around the Rose [y|n]? ')
@@ -142,7 +143,7 @@ def askToPlay(rounds, guess_correctly):
                 valid = True
     
     else:
-        if guess_correctly > 0:
+        if guess_correctly:
             # Just guessed correctly, ask if they want to replay the game.
             while not valid:
                 play = input('\nDo you want to keep playing [y|n]? ')
@@ -238,7 +239,7 @@ while play.lower() not in ['n', 'no']:
 
 
 # ------------------------------ Summary ------------------------------ #
-if rounds > 0:
+if rounds:
     print(
     f"""\n
 Game Summary
