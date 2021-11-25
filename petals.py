@@ -28,13 +28,12 @@ import dice
 def validate_guess():
     """Docstring for the function validate_guess().
     
-    Prompt for, read, and validate a guess from the user which should 
-    be a positive integer.
+    Prompt for, read, and validate a guess from the user.
 
     Returns
     -------
-    int
-        The positive integer guess received from the user.
+    float
+        The valid guess received from the user.
     """
     guess = None
     
@@ -46,7 +45,7 @@ def validate_guess():
         except ValueError as e:
             print('Error:', e, '\n')
     
-    return int(guess)
+    return guess
 
 
 def calculate_petals(dice_list):
@@ -94,14 +93,14 @@ def ask_to_play(rounds, guess_correctly):
     str
         The user's response if they want to play again. 
     """
-    EXPECTED_INPUTS = ['y', 'yes', 'n', 'no']
+    VALID_ANSWERS = ['y', 'yes', 'n', 'no']
     valid = False
 
     if not rounds:
         # Ask if they want to start the game.
         while not valid:
             play = input('\nWould you like to play Petals Around the Rose [y|n]? ')
-            if play.lower() not in EXPECTED_INPUTS:
+            if play.lower() not in VALID_ANSWERS:
                 print("Please enter either 'y' or 'n'.")
             else:
                 valid = True
@@ -111,7 +110,7 @@ def ask_to_play(rounds, guess_correctly):
             # Just guessed correctly, ask if they want to replay the game.
             while not valid:
                 play = input('\nDo you want to keep playing [y|n]? ')
-                if play.lower() not in EXPECTED_INPUTS:
+                if play.lower() not in VALID_ANSWERS:
                     print("Please enter either 'y' or 'n'.")
                 else:
                     valid = True
@@ -120,12 +119,12 @@ def ask_to_play(rounds, guess_correctly):
             # Just guessed incorrectly, ask if they want to stop the game.
             while not valid:
                 stop = input('\nDo you give up [y|n]? ')
-                if stop.lower() not in EXPECTED_INPUTS:
+                if stop.lower() not in VALID_ANSWERS:
                     print("Please enter either 'y' or 'n'.")
                 else:
                     valid = True
 
-            if stop.lower() not in EXPECTED_INPUTS[2:4]:
+            if stop.lower() not in VALID_ANSWERS[2:4]:
                 play = 'n'
             else:
                 play = 'y'
@@ -178,8 +177,8 @@ while play.lower() not in ['n', 'no']:
 
     # Randomly roll six dice and store them in a list.
     dice_list = []
-    for _ in range(7):
-        dice_list.append(random.randint(2, 6))
+    for _ in range(6):
+        dice_list.append(random.randint(1, 6))
 
     # Display the six generated dice rolls.
     dice.display_dice(dice_list)
@@ -192,9 +191,9 @@ while play.lower() not in ['n', 'no']:
 
     # Compare the user's guess with the total petals calculated.
     if guess == petals:
-        consecutive_correct += 2
-        total_correct += 2
-        if consecutive_correct % 5 == 0:
+        consecutive_correct += 1
+        total_correct += 1
+        if consecutive_correct % 4 == 0:
             print(
                 'Congratulations! You have worked out the secret!\n'
                 'Make sure you don\'t tell anyone!'
@@ -212,7 +211,7 @@ while play.lower() not in ['n', 'no']:
         
     else:
         consecutive_correct = 0
-        print(f'No sorry, it\'s {petals} not {guess}.', end=' ')
+        print(f'No sorry, it\'s {petals} not {int(guess)}.', end=' ')
         if guess % 2 != 0:
             print(f'The score is always even.')
         else:
