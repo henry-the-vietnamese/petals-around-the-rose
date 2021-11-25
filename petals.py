@@ -64,6 +64,7 @@ def calculate_petals(dice_list):
         The number of petals around the rose / The result of this round.
     """
     result = 0 
+
     for face_value in dice_list:
         if face_value == 3:
             result += 2
@@ -71,6 +72,7 @@ def calculate_petals(dice_list):
             result += 4
         else:                   # face_value = 1, 2, 4, 6
             result += 0
+
     return result
 
 
@@ -134,13 +136,13 @@ def ask_to_play(rounds, guess_correctly):
 
 # ------------------------------ Program ------------------------------ #
 print(
-    f'File:         petals.py',
-    f'Author:       Tan Duc Mai',
-    f'Email:        tan.duc.work@gmail.com',
-    f'Description:  Build a mathematical challenging puzzle/game -',
-    f'              Petals Around the Rose.',
-    f'I hereby declare that I completed this work without any improper help',
-    f'from a third party and without using any aids other than those cited.',
+    'File:         petals.py',
+    'Author:       Tan Duc Mai',
+    'Email:        tan.duc.work@gmail.com',
+    'Description:  Build a mathematical challenging puzzle/game -',
+    '              Petals Around the Rose.',
+    'I hereby declare that I completed this work without any improper help',
+    'from a third party and without using any aids other than those cited.',
     sep='\n',
     end='\n\n',
 )
@@ -165,7 +167,7 @@ rounds = 0                  # The number of games that will be played.
 consecutive_correct = 0     # The number of consecutive correct guesses.
 total_correct = 0           # The number of correct guesses in total.
 potentate = False           # Become True if the user guessed correctly 
-                                # four times in a row.
+                            # four times in a row.
 
 # Ask if the user wants to start playing.
 play = ask_to_play(rounds, consecutive_correct)
