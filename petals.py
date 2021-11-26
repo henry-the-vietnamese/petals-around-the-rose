@@ -13,11 +13,11 @@
 
 # --------------------------- Module Imports -------------------------- #
 """
-The random module allows for the generation of random numbers 
+The random module allows for the generation of random numbers
 (face values of the dice).
-The predefined dice module displays the face value of dice 
+The predefined dice module displays the face value of dice
 to the screen.
-In general, the random module gives the face of each die 
+In general, the random module gives the face of each die
 a value which is displayed to the screen using the dice module.
 """
 import random
@@ -27,7 +27,7 @@ import dice
 # ------------------------ Function Definitions ----------------------- #
 def validate_guess():
     """Docstring for the function validate_guess().
-    
+
     Prompt for, read, and validate a guess from the user.
 
     Returns
@@ -36,7 +36,7 @@ def validate_guess():
         The valid guess received from the user.
     """
     guess = None
-    
+
     while guess is None or guess < 0:
         try:
             guess = float(input('Please enter your guess for the roll: '))
@@ -44,7 +44,7 @@ def validate_guess():
                 print('Error: negative number\n')
         except ValueError as e:
             print('Error:', e, '\n')
-    
+
     return guess
 
 
@@ -63,7 +63,7 @@ def calculate_petals(dice_list):
     int
         The number of petals around the rose / The result of this round.
     """
-    result = 0 
+    result = 0
 
     for face_value in dice_list:
         if face_value == 3:
@@ -87,13 +87,13 @@ def ask_to_play(rounds, guess_correctly):
         The number of rounds the user has played.
         The value 0 (False) for not having played any game.
     guess_correctly : int
-        The number of correct guesses in a row. 
+        The number of correct guesses in a row.
         The value 0 (Flase) means an incorrect guess is just made.
 
     Returns
     -------
     str
-        The user's response if they want to play again. 
+        The user's response if they want to play again.
     """
     VALID_ANSWERS = ['y', 'yes', 'n', 'no']
     valid = False
@@ -106,7 +106,7 @@ def ask_to_play(rounds, guess_correctly):
                 print("Please enter either 'y' or 'n'.")
             else:
                 valid = True
-    
+
     else:
         if guess_correctly:
             # Just guessed correctly, ask if they want to replay the game.
@@ -166,7 +166,7 @@ print(
 rounds = 0                  # The number of games that will be played.
 consecutive_correct = 0     # The number of consecutive correct guesses.
 total_correct = 0           # The number of correct guesses in total.
-potentate = False           # Become True if the user guessed correctly 
+potentate = False           # Become True if the user guessed correctly
                             # four times in a row.
 
 # Ask if the user wants to start playing.
@@ -185,7 +185,7 @@ while play.lower() not in ['n', 'no']:
     # Display the six generated dice rolls.
     dice.display_dice(dice_list)
 
-    # Petals calculation. 
+    # Petals calculation.
     petals = calculate_petals(dice_list)
 
     # Prompt for, read, and validate guess from the user.
@@ -210,14 +210,14 @@ while play.lower() not in ['n', 'no']:
             potentate = True
             # Ask if the user wants to play again.
             play = ask_to_play(rounds, consecutive_correct)
-        
+
     else:
         consecutive_correct = 0
         print(f'No sorry, it\'s {petals} not {int(guess)}.', end=' ')
         if guess % 2 != 0:
             print(f'The score is always even.')
         else:
-            print() 
+            print()
         print(
             '\nHint: The name of the game is important... '
             'Petals Around the Rose.'
