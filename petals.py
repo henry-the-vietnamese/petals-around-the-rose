@@ -1,15 +1,16 @@
-#!/usr/bin/env python3
-
-#
-# File:         petals.py
-# Author:       Tan Duc Mai
-# Email:        tan.duc.work@gmail.com
-# Date:         6/10/2021
-# Description:  Build a mathematical challenging puzzle/game -
-#               Petals Around the Rose.
-#   I hereby declare that I completed this work without any improper help
-#   from a third party and without using any aids other than those cited.
-#
+# ----------------------------------------------------------------------------
+# | !/usr/bin/python3
+# |
+# | File:         petals.py
+# | Author:       Tan Duc MAI
+# | Email:        tan.duc.work@gmail.com
+# | Date:         06-Oct-2021
+# | Description:  Build a mathematical challenging puzzle game -
+# |               Petals Around the Rose.
+# |   I hereby declare that I completed this work without any improper help
+# |   from a third party and without using any aids other than those cited.
+# |
+# ----------------------------------------------------------------------------
 
 
 # ------------------------------- Module Imports -------------------------------
@@ -227,7 +228,7 @@ def main():
             play = confirm_play(rounds, consecutive_correct)
 
 
-    # ------------------------------ Summary ------------------------------ #
+    # Summary.
     if rounds:
         print(
             f'\n\nGame Summary',
