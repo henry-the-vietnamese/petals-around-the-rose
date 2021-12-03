@@ -9,7 +9,7 @@
 # Parameters:  A list containing 5 die face values, die1, die2, die3, die4, die5.
 # Returns: Nothing is returned from the function.
 def display_dice(dice):
-    
+
     # Display die number to the screen.
     print("\n")
     print(format("", '<5s'), end='')
@@ -36,7 +36,7 @@ def display_dice(dice):
 
     # Display the middle row of face value to the screen.
     print(format("", '<6s'), end='')
-    for i in range(len(dice)):       
+    for i in range(len(dice)):
         if dice[i] == 1 or dice[i] == 3 or dice[i] == 5:
             print(format(" *", '<10s'), end='')
         elif dice[i] == 6:
