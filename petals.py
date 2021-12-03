@@ -11,7 +11,7 @@
 #   from a third party and without using any aids other than those cited.
 
 
-# --------------------------- Module Imports -------------------------- #
+# ------------------------------- Module Imports -------------------------------
 """
 The random module allows for the generation of random numbers
 (face values of the dice).
@@ -24,7 +24,7 @@ import random
 import dice
 
 
-# ------------------------ Function Definitions ----------------------- #
+# ---------------------------- Function Definitions ---------------------------
 def validate_guess():
     """Docstring for the function validate_guess().
 
@@ -76,8 +76,8 @@ def calculate_petals(dice_list):
     return result
 
 
-def ask_to_play(rounds, guess_correctly):
-    """Docstring for the function ask_to_play().
+def confirm_play(rounds, guess_correctly):
+    """Docstring for the function confirm_play().
 
     Ask if the user wants to play the game again.
 
@@ -99,7 +99,7 @@ def ask_to_play(rounds, guess_correctly):
     valid = False
 
     if not rounds:
-        # Ask if they want to start the game.
+        # Ask if they want to play the game.
         while not valid:
             play = input('\nWould you like to play Petals Around the Rose [y|n]? ')
             if play.lower() not in VALID_ANSWERS:
@@ -134,113 +134,118 @@ def ask_to_play(rounds, guess_correctly):
     return play
 
 
-# ------------------------------ Program ------------------------------ #
-print(
-    'File:         petals.py',
-    'Author:       Tan Duc Mai',
-    'Email:        tan.duc.work@gmail.com',
-    'Description:  Build a mathematical challenging puzzle/game -',
-    '              Petals Around the Rose.',
-    'I hereby declare that I completed this work without any improper help',
-    'from a third party and without using any aids other than those cited.',
-    sep='\n',
-    end='\n\n',
-)
-
-# Display the game's instructions.
-print(
-    'Petals Around the Rose',
-    '----------------------',
-    'The name of the game is \'Petals Around the Rose\'. The name of the',
-    'game is important. The computer will roll dice and ask you to guess',
-    'the score for the roll. The score will always be zero or an even',
-    'number. Your mission, should you choose to accept it, is to work out',
-    'how the computer calculates the score. If you succeed in working',
-    'out the secret and guess correctly four times in a row, you become a',
-    'Potentate of the Rose.',
-    sep='\n',
-    end='\n\n',
-)
-
-# Variable initialisation.
-rounds = 0                  # The number of games that will be played.
-consecutive_correct = 0     # The number of consecutive correct guesses.
-total_correct = 0           # The number of correct guesses in total.
-potentate = False           # Become True if the user guessed correctly
-                            # four times in a row.
-
-# Ask if the user wants to start playing.
-play = ask_to_play(rounds, consecutive_correct)
-
-# Start the game if the user says 'yes'.
-while play.lower() not in ['n', 'no']:
-    # Start the game.
-    rounds += 1
-
-    # Randomly roll six dice and store them in a list.
-    dice_list = []
-    for _ in range(6):
-        dice_list.append(random.randint(1, 6))
-
-    # Display the six generated dice rolls.
-    dice.display_dice(dice_list)
-
-    # Petals calculation.
-    petals = calculate_petals(dice_list)
-
-    # Prompt for, read, and validate guess from the user.
-    guess = validate_guess()
-
-    # Compare the user's guess with the total petals calculated.
-    if guess == petals:
-        consecutive_correct += 1
-        total_correct += 1
-        if consecutive_correct % 4 == 0:
-            print(
-                'Congratulations! You have worked out the secret!\n'
-                'Make sure you don\'t tell anyone!'
-            )
-            # Ask if the user wants to play again.
-            play = ask_to_play(rounds, consecutive_correct)
-        else:
-            print('Well done! You guessed it!')
-        # If the user has more than four correct guesses in a row.
-        if consecutive_correct > 4:
-            # Confirm four consecutive guesses.
-            potentate = True
-            # Ask if the user wants to play again.
-            play = ask_to_play(rounds, consecutive_correct)
-
-    else:
-        consecutive_correct = 0
-        print(f'No sorry, it\'s {petals} not {int(guess)}.', end=' ')
-        if guess % 2 != 0:
-            print(f'The score is always even.')
-        else:
-            print()
-        print(
-            '\nHint: The name of the game is important... '
-            'Petals Around the Rose.'
-        )
-        # Ask if the user still wants to play again.
-        play = ask_to_play(rounds, consecutive_correct)
-
-
-# ------------------------------ Summary ------------------------------ #
-if rounds:
+# ------------------------------- Main Function -------------------------------
+def main():
+    # Display my details.
     print(
-        f'\n\nGame Summary',
-        f'------------',
-        f'You played {rounds} games:',
-        f' * Correct guesses:     {total_correct}',
-        f' * Incorrect guesses:   {rounds - total_correct}',
+        'File:         petals.py',
+        'Author:       Tan Duc Mai',
+        'Email:        tan.duc.work@gmail.com',
+        'Description:  Build a mathematical challenging puzzle/game -',
+        '              Petals Around the Rose.',
+        'I hereby declare that I completed this work without any improper help',
+        'from a third party and without using any aids other than those cited.',
         sep='\n',
         end='\n\n',
     )
-    if potentate:
-        print('Congratulations, you are now a Potentate of the Rose.')
+
+    # Display the game's instructions.
+    print(
+        'Petals Around the Rose',
+        '----------------------',
+        'The name of the game is \'Petals Around the Rose\'. The name of the',
+        'game is important. The computer will roll dice and ask you to guess',
+        'the score for the roll. The score will always be zero or an even',
+        'number. Your mission, should you choose to accept it, is to work out',
+        'how the computer calculates the score. If you succeed in working',
+        'out the secret and guess correctly four times in a row, you become a',
+        'Potentate of the Rose.',
+        sep='\n',
+        end='\n\n',
+    )
+
+    # Variable initialisation.
+    rounds = 0                  # The number of games that will be played.
+    consecutive_correct = 0     # The number of consecutive correct guesses.
+    total_correct = 0           # The number of correct guesses in total.
+    potentate = False           # Become True if the user guessed correctly
+                                # four times in a row.
+
+    # Ask if the user wants to start playing.
+    play = confirm_play(rounds, consecutive_correct)
+
+    # Start the game if the user says 'yes'.
+    while play.lower() not in ['n', 'no']:
+        # Start the game.
+        rounds += 1
+
+        # Randomly roll six dice and store them in a list.
+        dice_list = []
+        for _ in range(6):
+            dice_list.append(random.randint(1, 6))
+
+        # Display the six generated dice rolls.
+        dice.display_dice(dice_list)
+
+        # Petals calculation.
+        petals = calculate_petals(dice_list)
+
+        # Prompt for, read, and validate guess from the user.
+        guess = validate_guess()
+
+        # Compare the user's guess with the total petals calculated.
+        if guess == petals:
+            consecutive_correct += 1
+            total_correct += 1
+            if consecutive_correct % 4 == 0:
+                print('Congratulations! You have worked out the secret!',
+                      'Make sure you don\'t tell anyone!', sep='\n')
+                # Ask if the user wants to play again.
+                play = confirm_play(rounds, consecutive_correct)
+            else:
+                print('Well done! You guessed it!')
+            # If the user has more than four correct guesses in a row.
+            if consecutive_correct > 4:
+                # Confirm four consecutive guesses.
+                potentate = True
+                # Ask if the user wants to play again.
+                play = confirm_play(rounds, consecutive_correct)
+
+        else:
+            consecutive_correct = 0
+            print(f'No sorry, it\'s {petals} not {int(guess)}.', end=' ')
+            if guess % 2 != 0:
+                print(f'The score is always even.')
+            else:
+                print()
+            print(
+                '\nHint: The name of the game is important... '
+                'Petals Around the Rose.'
+            )
+            # Ask if the user still wants to play again.
+            play = confirm_play(rounds, consecutive_correct)
+
+
+    # ------------------------------ Summary ------------------------------ #
+    if rounds:
+        print(
+            f'\n\nGame Summary',
+            f'------------',
+            f'You played {rounds} games:',
+            f' * Correct guesses:     {total_correct}',
+            f' * Incorrect guesses:   {rounds - total_correct}',
+            sep='\n',
+            end='\n\n',
+        )
+        if potentate:
+            print('Congratulations, you are now a Potentate of the Rose.')
+        else:
+            print('Maybe you will work it out next time.')
+        print('Thanks for playing!')
     else:
-        print('Maybe you will work it out next time.')
-    print('Thanks for playing!')
-else:
-    print('\nPlease play soon... :)')
+        print('\nPlease play soon... :)')
+
+
+# --------------------------- Call the Main Function --------------------------
+if __name__ == '__main__':
+    main()
