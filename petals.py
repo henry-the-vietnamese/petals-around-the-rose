@@ -13,7 +13,7 @@
 # ----------------------------------------------------------------------------
 
 
-# ------------------------------- Module Imports -------------------------------
+# ------------------------------- Module Imports ------------------------------
 """
 The random module allows for the generation of random numbers
 (face values of the dice).
