@@ -28,9 +28,7 @@ import dice
 
 # ---------------------------- Function Definitions ---------------------------
 def validate_guess():
-    """Docstring for the function validate_guess().
-
-    Prompt for, read, and validate a guess from the user.
+    """Prompt for, read, and validate a guess from the user.
 
     Returns
     -------
@@ -51,13 +49,11 @@ def validate_guess():
 
 
 def calculate_petals(dice_list):
-    """Docstring for the function calculate_petals().
-
-    Calculate the number of petals around the rose in the current round.
+    """Calculate the number of petals around the rose in the current round.
 
     Parameters
     ----------
-    dice_list : list
+    list
         The list whose items are the face values of the dice.
 
     Returns
@@ -79,9 +75,7 @@ def calculate_petals(dice_list):
 
 
 def confirm_play(rounds, guess_correctly):
-    """Docstring for the function confirm_play().
-
-    Ask if the user wants to play the game again.
+    """Ask if the user wants to play the game again.
 
     Parameters
     ----------
@@ -226,7 +220,6 @@ def main():
             )
             # Ask if the user still wants to play again.
             play = confirm_play(rounds, consecutive_correct)
-
 
     # Summary.
     if rounds:
