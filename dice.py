@@ -1,15 +1,30 @@
-#
-# Petals Around the Rose.
-# Dice module - PSP Assignment 1, 2021.
-#
+#!/usr/bin/python3
 
-# Function to display the face value of dice to the screen.
-# This function takes a list of five numbers (the values of the five die to display) and
-# displays the dice to the screen.
-# Parameters:  A list containing 5 die face values, die1, die2, die3, die4, die5.
-# Returns: Nothing is returned from the function.
+# ----------------------------------------------------------------------------
+# |
+# | File:         dice.py
+# | Author:       Tan Duc MAI
+# | Email:        tan.duc.work@gmail.com
+# | Date:         02-Feb-2022
+# | Description:  Displays the face value of dice to the screen.
+# |   I hereby declare that I completed this work without any improper help
+# |   from a third party and without using any aids other than those cited.
+# |
+# ----------------------------------------------------------------------------
+
+
 def display_dice(dice):
+    """Display the face value of dice to the screen.
 
+    Parameters
+    ----------
+    list
+        A list containing 5 die face values (die1, die2, die3, die4, die5).
+
+    Returns
+    -------
+    None
+    """
     # Display die number to the screen.
     print("\n")
     print(format("", '<5s'), end='')
