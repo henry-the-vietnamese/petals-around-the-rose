@@ -3,7 +3,7 @@
 # ----------------------------------------------------------------------------
 # |
 # | File:         petals.py
-# | Author:       Tan Duc MAI
+# | Author:       Tan Duc Mai
 # | Email:        tan.duc.work@gmail.com
 # | Date:         06-Oct-2021
 # | Description:  Build a mathematical challenging puzzle game -
