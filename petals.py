@@ -1,5 +1,6 @@
+#!/usr/bin/python3
+
 # ----------------------------------------------------------------------------
-# | !/usr/bin/python3
 # |
 # | File:         petals.py
 # | Author:       Tan Duc MAI
@@ -15,12 +16,11 @@
 
 # ------------------------------- Module Imports ------------------------------
 """
-The random module allows for the generation of random numbers
-(face values of the dice).
-The predefined dice module displays the face value of dice
-to the screen.
-In general, the random module gives the face of each die
-a value which is displayed to the screen using the dice module.
+The random module allows for the generation of random numbers (face values of
+the dice).
+The predefined dice module displays the face value of dice to the screen.
+In general, the random module gives the face of each die a value which is
+displayed to the screen using the dice module.
 """
 import random
 import dice
@@ -41,9 +41,9 @@ def validate_guess():
         try:
             guess = float(input('Please enter your guess for the roll: '))
             if guess < 0:
-                print('Error: negative number\n')
+                print('ERROR: negative number\n')
         except ValueError as e:
-            print('Error:', e, '\n')
+            print('ERROR:', e, '\n')
 
     return guess
 
@@ -97,7 +97,8 @@ def confirm_play(rounds, guess_correctly):
     if not rounds:
         # Ask if they want to play the game.
         while not valid:
-            play = input('\nWould you like to play Petals Around the Rose [y|n]? ')
+            play = input('\nWould you like to play '
+                         'Petals Around the Rose [y|n]? ')
             if play.lower() not in VALID_ANSWERS:
                 print("Please enter either 'y' or 'n'.")
             else:
@@ -139,8 +140,6 @@ def main():
         'Email:        tan.duc.work@gmail.com',
         'Description:  Build a mathematical challenging puzzle/game -',
         '              Petals Around the Rose.',
-        'I hereby declare that I completed this work without any improper help',
-        'from a third party and without using any aids other than those cited.',
         sep='\n',
         end='\n\n',
     )
@@ -153,11 +152,10 @@ def main():
         'game is important. The computer will roll dice and ask you to guess',
         'the score for the roll. The score will always be zero or an even',
         'number. Your mission, should you choose to accept it, is to work out',
-        'how the computer calculates the score. If you succeed in working',
         'out the secret and guess correctly four times in a row, you become a',
         'Potentate of the Rose.',
         sep='\n',
-        end='\n\n',
+        end='\n' + '-' * 22 + '\n',
     )
 
     # Variable initialisation.
@@ -195,7 +193,8 @@ def main():
             total_correct += 1
             if consecutive_correct % 4 == 0:
                 print('Congratulations! You have worked out the secret!',
-                      'Make sure you don\'t tell anyone!', sep='\n')
+                      'Make sure you don\'t tell anyone!',
+                      sep='\n')
                 # Ask if the user wants to play again.
                 play = confirm_play(rounds, consecutive_correct)
             else:
