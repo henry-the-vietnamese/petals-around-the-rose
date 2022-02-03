@@ -43,28 +43,28 @@ Potentate of the Rose.
 Would you like to play Petals Around the Rose [y|n]? y
 ```
 
-![First roll](images/1.png)
+![First roll](assets/1.png)
 
 ```
 Please enter your guess for the roll: 8
 Well done! You guessed it!
 ```
 
-![Second roll](images/2.png)
+![Second roll](assets/2.png)
 
 ```
 Please enter your guess for the roll: 8
 Well done! You guessed it!
 ```
 
-![Third roll](images/3.png)
+![Third roll](assets/3.png)
 
 ```
 Please enter your guess for the roll: 2
 Well done! You guessed it!
 ```
 
-![Fourth roll](images/4.png)
+![Fourth roll](assets/4.png)
 
 ```
 Please enter your guess for the roll: 8
@@ -74,7 +74,7 @@ Make sure you don't tell anyone!
 Do you want to keep playing [y|n]? y
 ```
 
-![Fifth roll](images/5.png)
+![Fifth roll](assets/5.png)
 
 ```
 Please enter your guess for the roll: 3
