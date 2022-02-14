@@ -56,28 +56,28 @@ Would you like to play Petals Around the Rose [y|n]? y
 
 ![First roll](assets/1.png)
 
-```
+```text
 Please enter your guess for the roll: 8
 Well done! You guessed it!
 ```
 
 ![Second roll](assets/2.png)
 
-```
+```text
 Please enter your guess for the roll: 8
 Well done! You guessed it!
 ```
 
 ![Third roll](assets/3.png)
 
-```
+```text
 Please enter your guess for the roll: 2
 Well done! You guessed it!
 ```
 
 ![Fourth roll](assets/4.png)
 
-```
+```text
 Please enter your guess for the roll: 8
 Congratulations! You have worked out the secret!
 Make sure you don't tell anyone!
@@ -87,7 +87,7 @@ Do you want to keep playing [y|n]? y
 
 ![Fifth roll](assets/5.png)
 
-```
+```text
 Please enter your guess for the roll: 3
 No sorry, it's 0 not 3. The score is always even.
 
